@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="MP3Player">
+    <output-path>$PROJECT_DIR$/out/artifacts/MP3Player</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="JavaFXApp.jar">
+        <element id="module-output" name="MP3Player" />
+      </element>
+    </root>
+  </artifact>
+</component>
