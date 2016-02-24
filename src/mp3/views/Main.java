@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import mp3.controllers.MainController;
+import mp3.util.DbManager;
 
 /**
  * Created by Spring on 2/24/2016.
@@ -15,7 +16,8 @@ public class Main extends Application{
 
         @Override
         public void start(Stage primaryStage) throws Exception{
-
+            Class.forName("org.sqlite.JDBC");
+            DbManager.getInstance().init();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("main.fxml"));
             Parent root = loader.load();
             MainController controller = loader.getController();
