@@ -14,13 +14,13 @@
                <children>
                   <TableView fx:id="table_playlists" prefHeight="312.0" prefWidth="224.0">
                     <columns>
-                      <TableColumn fx:id="tCol_playlists" editable="false" prefWidth="207.0" text="Playlists" />
+                      <TableColumn fx:id="tCol_playlists" editable="false" prefWidth="223.0" style="text-align: center;" text="Playlists" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btn_addPlaylist" mnemonicParsing="false" prefHeight="41.0" prefWidth="224.0" text="Add playlist" />
+                  <Button fx:id="btn_addPlaylist" mnemonicParsing="false" onAction="#createPlayList" prefHeight="41.0" prefWidth="224.0" text="Add playlist" />
                   <TableView fx:id="table_albums" prefHeight="339.0" prefWidth="224.0">
                      <columns>
-                        <TableColumn fx:id="tCol_albums" editable="false" prefWidth="208.0" text="Albums" />
+                        <TableColumn fx:id="tCol_albums" editable="false" prefWidth="223.0" text="Albums" />
                      </columns>
                   </TableView>
                   <Button fx:id="btn_addAlbums" mnemonicParsing="false" prefHeight="41.0" prefWidth="224.0" text="Add album" />
@@ -68,9 +68,9 @@
                   <TableView fx:id="table" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="tCol_song" editable="false" maxWidth="300.0" minWidth="240.0" prefWidth="240.0" text="Song" />
-                        <TableColumn fx:id="tCol_Album" editable="false" maxWidth="240.0" minWidth="150.0" prefWidth="187.0" text="Album" />
-                        <TableColumn fx:id="tCol_Bitrate" editable="false" maxWidth="110.0" minWidth="63.0" prefWidth="89.0" text="Bitrate" />
-                        <TableColumn fx:id="tCol_Duration" editable="false" maxWidth="168.0" minWidth="74.0" prefWidth="89.0" text="Duration" />
+                        <TableColumn fx:id="tCol_Album" editable="false" maxWidth="240.0" minWidth="150.0" prefWidth="150.0" text="Album" />
+                        <TableColumn fx:id="tCol_Bitrate" editable="false" maxWidth="110.0" minWidth="100.0" prefWidth="100.0" text="Bitrate" />
+                        <TableColumn fx:id="tCol_Duration" editable="false" maxWidth="168.0" minWidth="100.0" prefWidth="100.0" text="Duration" />
                      </columns>
                   </TableView>
                </children>

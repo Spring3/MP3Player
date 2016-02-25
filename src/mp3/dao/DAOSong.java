@@ -37,7 +37,7 @@ public class DAOSong implements IDAO<Song>{
                 String path = resultSet.getString(3);
                 int duration = resultSet.getInt(4);
                 int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(5));
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
                 result = new Song(name, path, duration, bitrate, quality);
                 result.setId(songId);
 
@@ -66,7 +66,7 @@ public class DAOSong implements IDAO<Song>{
                 String path = resultSet.getString(3);
                 int duration = resultSet.getInt(4);
                 int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(5));
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
                 result = new Song(songname, path, duration, bitrate, quality);
                 result.setId(songId);
 
@@ -95,7 +95,7 @@ public class DAOSong implements IDAO<Song>{
                 String path = resultSet.getString(3);
                 int duration = resultSet.getInt(4);
                 int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(5));
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
                 Song song = new Song(name, path, duration, bitrate, quality);
                 song.setId(songId);
                 result.add(song);
@@ -124,7 +124,7 @@ public class DAOSong implements IDAO<Song>{
                 String path = resultSet.getString(3);
                 int duration = resultSet.getInt(4);
                 int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(5));
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
                 Song song = new Song(name, path, duration, bitrate, quality);
                 song.setId(songId);
                 result.add(song);
@@ -153,7 +153,7 @@ public class DAOSong implements IDAO<Song>{
                 String path = resultSet.getString(3);
                 int duration = resultSet.getInt(4);
                 int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(5));
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
                 Song song = new Song(name, path, duration, bitrate, quality);
                 song.setId(songId);
                 result.add(song);
@@ -186,7 +186,40 @@ public class DAOSong implements IDAO<Song>{
             return true;
         }
         catch (SQLException ex){
-            ex.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addToPlaylist(Playlist playlist, Song song) {
+        try{
+            Connection connection = manager.getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO song_playlist VALUES(?, ?);");
+            statement.setInt(1, song.getId());
+            statement.setInt(2, playlist.getId());
+            statement.executeUpdate();
+
+            statement.close();
+            connection.close();
+            return true;
+        }
+        catch (SQLException ex){
+            return false;
+        }
+    }
+
+    public boolean addToAlbum(Album album, Song song) {
+        try{
+            Connection connection = manager.getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO song_album VALUES(?, ?);");
+            statement.setInt(1, song.getId());
+            statement.setInt(2, album.getId());
+            statement.executeUpdate();
+
+            statement.close();
+            connection.close();
+            return true;
+        }
+        catch (SQLException ex){
             return false;
         }
     }

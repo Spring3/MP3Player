@@ -1,6 +1,8 @@
 package mp3.dao;
 
+import mp3.model.Album;
 import mp3.model.Playlist;
+import mp3.model.Song;
 import mp3.util.DbManager;
 
 import java.sql.*;
@@ -80,6 +82,62 @@ public class DAOPlaylist implements IDAO<Playlist> {
                 Playlist playlist = new Playlist(name);
                 playlist.setId(playListId);
                 result.add(playlist);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Album> getAllAlbums(Playlist value) {
+        List<Album> result = new ArrayList<>();
+        try{
+            Connection connection = manager.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE playlist_id = ?");
+            statement.setInt(1, value.getId());
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                int albumId = resultSet.getInt(1);
+                String albumname = resultSet.getString(2);
+                String picPath = resultSet.getString(3);
+                int playListId = resultSet.getInt(4);
+                Album album = new Album(albumname, picPath, playListId);
+                album.setId(albumId);
+                result.add(album);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Song> getAllSongs(Playlist playlist){
+        List<Song> result = new ArrayList<>();
+        try{
+            Connection connection = manager.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_playlist ON song_id = song.id WHERE playlist_id = ?");
+            statement.setInt(1, playlist.getId());
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                int songId = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String path = resultSet.getString(3);
+                int duration = resultSet.getInt(4);
+                int bitrate = resultSet.getInt(5);
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
+                Song song = new Song(name, path, duration, bitrate, quality);
+                song.setId(songId);
+                result.add(song);
             }
 
             resultSet.close();

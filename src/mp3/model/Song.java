@@ -1,5 +1,7 @@
 package mp3.model;
 
+import javafx.beans.property.*;
+
 /**
  * Created by Spring on 2/25/2016.
  */
@@ -12,24 +14,27 @@ public class Song {
     }
 
     public Song(){
-
+        name = new SimpleStringProperty();
+        path = new SimpleStringProperty();
+        duration = new SimpleIntegerProperty();
+        bitrate = new SimpleIntegerProperty();
     }
 
     public Song(String name, String path, int duration, int bitrate, Quality quality){
-        setName(name);
-        setPath(path);
-        setDuration(duration);
-        setBitrate(bitrate);
+        this.name = new SimpleStringProperty(name);
+        this.path = new SimpleStringProperty(path);
+        this.duration = new SimpleIntegerProperty(duration);
+        this.bitrate = new SimpleIntegerProperty(bitrate);
         setQuality(quality);
     }
 
 
 
     private int id;
-    private String name;
-    private String path;
-    private int duration;
-    private int bitrate;
+    private StringProperty name;
+    private StringProperty path;
+    private IntegerProperty duration;
+    private IntegerProperty bitrate;
     private Quality quality;
 
     public int getId(){
@@ -41,35 +46,51 @@ public class Song {
     }
 
     public String getName() {
+        return name.get();
+    }
+
+    public StringProperty getNameProperty(){
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getPath() {
-        return path;
+        return path.get();
     }
 
     public void setPath(String path) {
-        this.path = path;
+        this.path.set(path);
+    }
+
+    public StringProperty getPathProperty(){
+        return path;
     }
 
     public int getDuration() {
-        return duration;
+        return duration.get();
     }
 
     public void setDuration(int duration) {
-        this.duration = duration;
+        this.duration.set(duration);
+    }
+
+    public IntegerProperty getDurationProperty(){
+        return duration;
     }
 
     public int getBitrate() {
-        return bitrate;
+        return bitrate.get();
     }
 
     public void setBitrate(int bitrate) {
-        this.bitrate = bitrate;
+        this.bitrate.set(bitrate);
+    }
+
+    public IntegerProperty getBitrateProperty(){
+        return bitrate;
     }
 
     public Quality getQuality() {

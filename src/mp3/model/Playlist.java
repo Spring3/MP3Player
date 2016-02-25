@@ -62,4 +62,9 @@ public class Playlist {
         return result;
     }
 
+    @Override
+    public String toString(){
+        return getName();
+    }
+
 }
