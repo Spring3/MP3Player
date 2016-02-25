@@ -1,5 +1,9 @@
 package mp3.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import mp3.dao.DAOPlaylist;
 
 /**
@@ -8,59 +12,62 @@ import mp3.dao.DAOPlaylist;
 public class Album {
 
     public Album(){
-
+        id = new SimpleIntegerProperty();
+        name = new SimpleStringProperty();
+        picPath = new SimpleStringProperty();
+        playlistId = new SimpleIntegerProperty();
     }
 
     public Album(String name, String picPath, Playlist playlist){
-        setName(name);
-        setPicPath(picPath);
-        setPlaylistId(playlist.getId());
+        this.name = new SimpleStringProperty(name);
+        this.picPath = new SimpleStringProperty(picPath);
+        this.playlistId = new SimpleIntegerProperty(playlist.getId());
+        id = new SimpleIntegerProperty();
     }
 
     public Album(String name, String picPath, int playlistId){
-        setName(name);
-        setPicPath(picPath);
-        setPlaylistId(playlistId);
+        this.name = new SimpleStringProperty(name);
+        this.picPath = new SimpleStringProperty(picPath);
+        this.playlistId = new SimpleIntegerProperty(playlistId);
+        id = new SimpleIntegerProperty();
     }
 
-
-
-    private int id;
-    private String name;
-    private String picPath;
-    private int playlistId;
+    private IntegerProperty id;
+    private StringProperty name;
+    private StringProperty picPath;
+    private IntegerProperty playlistId;
 
 
     public int getId(){
-        return id;
+        return id.get();
     }
 
     public void setId(int id){
-        this.id = id;
+        this.id.set(id);
     }
 
     public String getName(){
-        return name;
+        return name.get();
     }
 
     public void setName(String name){
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getPicPath(){
-        return picPath;
+        return picPath.get();
     }
 
     public void setPicPath(String path){
-        picPath = path;
+        picPath.set(path);
     }
 
     public Playlist getPlayList(){
-        return new DAOPlaylist().get(playlistId);
+        return new DAOPlaylist().get(playlistId.get());
     }
 
     public void setPlaylistId(int id){
-        this.playlistId = id;
+        this.playlistId.set(id);
     }
 
     @Override
@@ -71,6 +78,7 @@ public class Album {
         Album album = (Album) o;
 
         if (getId() != album.getId()) return false;
+        if (playlistId != album.playlistId) return false;
         if (getName() != null ? !getName().equals(album.getName()) : album.getName() != null) return false;
         return !(getPicPath() != null ? !getPicPath().equals(album.getPicPath()) : album.getPicPath() != null);
 
@@ -81,8 +89,8 @@ public class Album {
         int result = getId();
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getPicPath() != null ? getPicPath().hashCode() : 0);
+        result = 31 * result + playlistId.get();
         return result;
     }
-
 
 }

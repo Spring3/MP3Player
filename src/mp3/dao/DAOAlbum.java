@@ -1,7 +1,6 @@
 package mp3.dao;
 
 import mp3.model.Album;
-import mp3.model.Playlist;
 import mp3.util.DbManager;
 
 import java.sql.Connection;

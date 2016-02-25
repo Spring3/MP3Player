@@ -1,35 +1,46 @@
 package mp3.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Created by Spring on 2/25/2016.
  */
 public class Playlist {
 
     public Playlist(){
-
+        id = new SimpleIntegerProperty();
+        name = new SimpleStringProperty();
     }
 
     public Playlist(String name){
-        setName(name);
+        this.name = new SimpleStringProperty(name);
+        id = new SimpleIntegerProperty();
     }
 
-    private int id;
-    private String name;
+    private IntegerProperty id;
+    private StringProperty name;
 
     public int getId(){
-        return id;
+        return id.get();
     }
 
     public void setId(int id){
-        this.id = id;
+        this.id.set(id);
     }
 
     public String getName(){
-        return name;
+        return name.get();
     }
 
     public void setName(String name){
-        this.name = name;
+        this.name.set(name);
+    }
+
+    public StringProperty getNameProperty(){
+        return name;
     }
 
     @Override
