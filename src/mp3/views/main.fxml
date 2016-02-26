@@ -23,7 +23,7 @@
                         <TableColumn fx:id="tCol_albums" editable="false" prefWidth="223.0" text="Albums" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btn_addAlbums" mnemonicParsing="false" prefHeight="41.0" prefWidth="224.0" text="Add album" />
+                  <Button fx:id="btn_addAlbums" mnemonicParsing="false" onAction="#createAlbum" prefHeight="41.0" prefWidth="224.0" text="Add album" />
                </children>
             </VBox>
          </left>
@@ -47,7 +47,7 @@
                               <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
-                    <MenuItem fx:id="mItem_Close" mnemonicParsing="false" text="Close">
+                    <MenuItem fx:id="mItem_Close" mnemonicParsing="false" onAction="#shutdown" text="Close">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="ESCAPE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
@@ -79,9 +79,10 @@
          <bottom>
             <AnchorPane prefHeight="62.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <ProgressBar fx:id="progressbar" layoutX="125.0" layoutY="21.0" prefHeight="20.0" prefWidth="1141.0" progress="0.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
+                  <ProgressBar fx:id="progressbar" layoutX="125.0" layoutY="21.0" prefHeight="20.0" prefWidth="1141.0" progress="0.0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
+                  <Label fx:id="lbl_duration" alignment="CENTER" layoutX="123.0" layoutY="23.0" prefHeight="17.0" prefWidth="67.0" text="0:00/0:00" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="23.0" />
                   <Button fx:id="btn_next" layoutX="85.0" layoutY="19.0" mnemonicParsing="false" text="&gt;&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="19.0" />
-                  <Button fx:id="btn_play" layoutX="41.0" layoutY="19.0" mnemonicParsing="false" text="Play" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="19.0" />
+                  <Button fx:id="btn_play" layoutX="41.0" layoutY="19.0" mnemonicParsing="false" onAction="#playSong" text="Play" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="19.0" />
                   <Button fx:id="btn_prev" layoutX="3.0" layoutY="19.0" mnemonicParsing="false" text="&lt;&lt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="19.0" />
                </children>
             </AnchorPane>

@@ -50,6 +50,10 @@ public class Album {
         return name.get();
     }
 
+    public StringProperty getNameProperty(){
+        return name;
+    }
+
     public void setName(String name){
         this.name.set(name);
     }

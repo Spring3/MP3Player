@@ -1,6 +1,7 @@
 package mp3.dao;
 
 import mp3.model.Album;
+import mp3.model.Song;
 import mp3.util.DbManager;
 
 import java.sql.Connection;
@@ -89,6 +90,35 @@ public class DAOAlbum implements IDAO<Album> {
                 Album album = new Album(name, picPath, playlistId);
                 album.setId(albumId);
                 result.add(album);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException ex){
+            ex.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Song> getAllSongs(Album album){
+        List<Song> result = new ArrayList<>();
+        try{
+            Connection connection = manager.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_album ON song_id = song.id WHERE album_id=?");
+            statement.setInt(1, album.getId());
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                int songId = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String path = resultSet.getString(3);
+                int duration = resultSet.getInt(4);
+                int bitrate = resultSet.getInt(5);
+                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
+                Song song = new Song(name, path, duration, bitrate, quality);
+                song.setId(songId);
+                result.add(song);
             }
 
             resultSet.close();
