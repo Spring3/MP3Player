@@ -199,6 +199,7 @@ public class MainController implements Initializable{
         btn_play.textProperty().bind(player.getTask().messageProperty());
         progressbar.progressProperty().bind(player.getTask().progressProperty());
         lbl_duration.textProperty().bind(player.getTask().titleProperty());
+        player.startTask();
 
 
     }
@@ -375,6 +376,11 @@ public class MainController implements Initializable{
                         }
                     }
                 }
+                try {
+                    Thread.currentThread().join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             });
 
             musicParsingThread.setDaemon(true);
@@ -437,21 +443,23 @@ public class MainController implements Initializable{
                     mp3Player.clearAndAddToQueue(table.getItems().subList(selectedSongIndex, table.getItems().size()));
                     mp3Player.addToQueue(table.getItems().subList(0, selectedSongIndex));
                     mp3Player.play();
+                    System.out.println("Inside switch");
                     break;
                 }
-                case "pause": {
-                    mp3Player.stop();
+                /*case "pause": {
+                    mp3Player.pause();
                     break;
                 }
                 case "continue": {
                     mp3Player.proceed();
                     break;
-                }
+                }        */
             }
         }
         else{
             mp3Player.clearAndAddToQueue(table.getItems());
             mp3Player.play();
+            System.out.println("Outside switch");
         }
 
 

@@ -6,10 +6,8 @@ import javafx.scene.media.MediaPlayer;
 import mp3.model.Song;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Spring on 2/25/2016.
@@ -17,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MP3Player {
 
     public static MP3Player instance;
-    private static MediaPlayer player;
+    private static volatile MediaPlayer player;
     private final Task task;
     private final Thread thread;
     private BlockingQueue<Song> songsQueue;
@@ -29,42 +27,41 @@ public class MP3Player {
             @Override
             protected Object call() throws Exception{
                 while(true){
-                    switch (player.getStatus()){
-                        case PLAYING:{
-                            double duration = player.getMedia().getDuration().toSeconds();
-                            double currentTime = player.getCurrentTime().toSeconds();
-                            this.updateProgress(100 * currentTime / duration, duration);
-                            this.updateMessage("pause");
-                            int minutes = (int) currentTime / 60;
-                            int seconds = (int) currentTime % 60 * 60;
-                            int minutesTotal = (int) duration / 60;
-                            int secondTotal = (int) duration % 60 * 60;
-                            this.updateTitle(String.format("%d:%d/%d:%d", minutes, seconds, minutesTotal, secondTotal));
-                            System.out.println("Playing");
-                            break;
+                    if (player != null) {
+                        switch (player.getStatus()) {
+
+                            case PLAYING: {
+                                double duration = player.getMedia().getDuration().toSeconds();
+                                double currentTime = player.getCurrentTime().toSeconds();
+                                updateProgress(100 * currentTime / duration, 100);
+                                updateMessage("pause");
+                                int minutes = (int) currentTime / 60;
+                                int seconds = (int) currentTime % 60;
+                                int minutesTotal = (int) duration / 60;
+                                int secondTotal = (int) duration % 60;
+                                updateTitle(String.format("%d:%d/%d:%d", minutes, seconds, minutesTotal, secondTotal));
+                                break;
+                            }
+                            case STOPPED: {
+                                updateMessage("play");
+                                break;
+                            }
+                            case PAUSED: {
+                                updateMessage("continue");
+                                break;
+                            }
                         }
-                        case STOPPED:{
-                            this.updateMessage("play");
-                            System.out.println("Stopped");
-                            break;
-                        }
-                        case PAUSED:{
-                            this.updateMessage("continue");
-                            System.out.println("Continue");
-                            break;
-                        }
-                        default:{
-                            this.updateMessage("play");
-                            this.updateTitle("0:0/0:0");
-                            System.out.println("Default");
-                            break;
-                        }
+                    }
+                    else{
+                        updateMessage("play");
+                        updateTitle("0:0/0:0");
+                        updateProgress(0, 1);
                     }
                 }
             }
         };
-
         thread = new Thread(task);
+        thread.setName("UI updater");
     }
 
     public static MP3Player getInstance(){
@@ -72,24 +69,23 @@ public class MP3Player {
             synchronized (Object.class){
                 if (instance == null){
                     instance = new MP3Player();
-                    instance.thread.start();
                 }
             }
         }
         return instance;
     }
 
-    public synchronized void addToQueue(Collection<Song> songs){
+    public void addToQueue(Collection<Song> songs){
         songsQueue.addAll(songs);
 
     }
 
-    public synchronized void clearAndAddToQueue(Collection<Song> songs){
+    public void clearAndAddToQueue(Collection<Song> songs){
         songsQueue.clear();
         songsQueue.addAll(songs);
     }
 
-    public synchronized void play(){
+    public void play(){
         if (songsQueue.size() == 0)
             return;
 
@@ -101,15 +97,11 @@ public class MP3Player {
             ex.printStackTrace();
         }
         player.setOnEndOfMedia(() -> {
-            try {
-                if (songsQueue.size() > 0) {
-                    player = new MediaPlayer(new Media(songsQueue.take().getPath()));
 
-                }
+            if (songsQueue.size() > 0) {
+                play();
             }
-            catch (InterruptedException ex){
-                ex.printStackTrace();
-            }
+
         });
     }
 
@@ -125,6 +117,10 @@ public class MP3Player {
 
     public Task getTask(){
         return task;
+    }
+
+    public void startTask(){
+        thread.start();
     }
 
     public void stop(){
