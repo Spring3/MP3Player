@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,6 +31,7 @@ import mp3.model.Song;
 import mp3.util.Config;
 import mp3.util.MP3Player;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -74,7 +76,7 @@ public class MainController implements Initializable{
     private MenuItem mItem_newAlbum;
 
     @FXML
-    private ProgressBar progressbar;
+    private Slider slider;
 
     @FXML
     private TableColumn<Playlist, String> tCol_playlists;
@@ -197,10 +199,16 @@ public class MainController implements Initializable{
 
         MP3Player player = MP3Player.getInstance();
         btn_play.textProperty().bind(player.getTask().messageProperty());
-        progressbar.progressProperty().bind(player.getTask().progressProperty());
+        slider.valueProperty().bind(player.getTask().valueProperty());
         lbl_duration.textProperty().bind(player.getTask().titleProperty());
         player.startTask();
 
+
+        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() < oldValue.doubleValue() || newValue.doubleValue() > oldValue.doubleValue() + 3 ){
+                MP3Player.getInstance().rewind(newValue.doubleValue());
+            }
+        });
 
     }
 
@@ -400,7 +408,7 @@ public class MainController implements Initializable{
     public void init(){
         btn_addPlaylist.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN), () -> mItem_newPlaylist.fire());
         btn_addAlbums.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.M, KeyCombination.CONTROL_DOWN), () -> mItem_newAlbum.fire());
-        btn_play.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.SPACE), () -> btn_play.fire());
+        btn_play.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.ENTER), () -> btn_play.fire());
         btn_prev.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.LEFT), () -> btn_prev.fire());
         btn_next.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.RIGHT), () -> btn_next.fire());
         tryGetMusic();
@@ -435,34 +443,24 @@ public class MainController implements Initializable{
 
     @FXML
     void playSong(ActionEvent event) {
-        int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
         MP3Player mp3Player = MP3Player.getInstance();
-        if (selectedSongIndex != -1) {
-            switch (btn_play.getText()) {
-                case "play": {
-                    mp3Player.clearAndAddToQueue(table.getItems().subList(selectedSongIndex, table.getItems().size()));
-                    mp3Player.addToQueue(table.getItems().subList(0, selectedSongIndex));
-                    mp3Player.play();
-                    System.out.println("Inside switch");
-                    break;
-                }
-                /*case "pause": {
-                    mp3Player.pause();
-                    break;
-                }
-                case "continue": {
-                    mp3Player.proceed();
-                    break;
-                }        */
+        //if (btn_play.getText().equals("play")){
+        if (mp3Player.getPlayerStatus() == MediaPlayer.Status.UNKNOWN){
+            int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
+
+            if (selectedSongIndex != -1) {
+                mp3Player.clearAndAddToQueue(table.getItems().subList(selectedSongIndex, table.getItems().size()));
+                mp3Player.addToQueue(table.getItems().subList(0, selectedSongIndex));
             }
-        }
-        else{
-            mp3Player.clearAndAddToQueue(table.getItems());
+            else{
+                mp3Player.clearAndAddToQueue(table.getItems());
+            }
             mp3Player.play();
-            System.out.println("Outside switch");
+        } else if (mp3Player.getPlayerStatus() == MediaPlayer.Status.PLAYING){
+            mp3Player.pause();
+        } else if (mp3Player.getPlayerStatus() == MediaPlayer.Status.PAUSED){
+            mp3Player.proceed();
         }
-
-
     }
 
     @FXML
@@ -473,5 +471,21 @@ public class MainController implements Initializable{
     @FXML
     void shutdown(ActionEvent actionEvent) {
         Platform.exit();
+    }
+
+    @FXML
+    void playNext(ActionEvent actionEvent) {
+        MP3Player.getInstance().playNext();
+    }
+
+    @FXML
+    void playPrev(ActionEvent actionEvent) {
+        MP3Player.getInstance().playPrev();
+    }
+
+    @FXML
+    void progressBarClicked(Event event) {
+
+
     }
 }
