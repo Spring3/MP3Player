@@ -18,4 +18,12 @@ public interface SongsContainer {
      * @return true if the song was assigned successfully
      */
     boolean assignSong(Song song);
+
+    /**
+     * Checks if the song was already added to the song container
+     * @param container the container to add the music to
+     * @param song song to be added
+     * @return true if the container doesn't contain the song
+     */
+    boolean containsSong(SongsContainer container, Song song);
 }

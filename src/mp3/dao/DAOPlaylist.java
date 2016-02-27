@@ -200,6 +200,10 @@ public class DAOPlaylist implements IDAO<Playlist> {
         }
     }
 
+    public boolean containsSong(Playlist playlis, Song song){
+        return getAllSongs(playlis).contains(song);
+    }
+
     @Override
     public boolean delete(Playlist value) {
         try{

@@ -252,9 +252,10 @@ public class MainController implements Initializable{
         table_playlists.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             //if the newly selected value is not null
             if (newSelection != null) {
+                table_albums.getSelectionModel().clearSelection();
                 //fetch songs from the playlist from database
                 List<Song> songs = new DAOPlaylist().getAllSongs(newSelection);
-                if (songs.size() > 0) {
+                //if (songs.size() > 0) {
                     //clear the tableview
                     table.getItems().clear();
                     label_header.setText(String.format("Songs from '%s'", newSelection));
@@ -263,9 +264,11 @@ public class MainController implements Initializable{
                     table_albums.getItems().clear();
                     //get all the albums from the selected playlist
                     table_albums.getItems().addAll(new DAOPlaylist().getAllAlbums(newSelection));
-                }
+                //}
             }
+
         });
+
     }
 
     /**
@@ -356,7 +359,9 @@ public class MainController implements Initializable{
                     //add songs from the album instead
                     table.getItems().addAll(songs);
                 }
+                table_playlists.getSelectionModel().clearSelection();
             }
+
         });
 
         //Option for the context menu. Shows songs from the album.
@@ -493,7 +498,10 @@ public class MainController implements Initializable{
         //getting the selected song
         Song selectedSong = table.getItems().get(table.getSelectionModel().getSelectedIndex());
         //if the result exists, add it to the database and link to the playlist
-        result.ifPresent(playlist -> new DAOSong().addToPlaylist(playlist, selectedSong));
+        result.ifPresent(playlist -> {
+            if (!new DAOPlaylist().containsSong(playlist, selectedSong))
+                new DAOSong().addToPlaylist(playlist, selectedSong);
+        });
     }
 
     /**
@@ -501,26 +509,16 @@ public class MainController implements Initializable{
      */
     private void showChoiceBoxForAlbumAdding(){
         List<Album> choices = new ArrayList<>();
-        Playlist selectedPlayList = null;
-        try{
-            //getting selected playlist from the tableview
-            selectedPlayList = table_playlists.getItems().get(table_playlists.getSelectionModel().getSelectedIndex());
-        }
-        catch (Exception ex){
-            //if it wasn't selected, letting the user know about it
-            showWarning("Error", "Playlist not selected", "Select the playlist to get the albums");
-            return;
-        }
 
         //add all the albums, fetched from the database, which are linked to the selected playlist
-        for(Album album : new DAOPlaylist().getAllAlbums(selectedPlayList)){
+        for(Album album : new DAOAlbum().getAll()){
             choices.add(album);
         }
 
         //if no choices
         if (choices.size() == 0){
             //Showing an error dialog
-            showWarning("Error", "No albums found", "There are no albums for the playlist selected. Please, create a new album and try again");
+            showWarning("Error", "No albums found", "There are no albums saved in the database. Please, create a new album and try again");
             return;
         }
 
@@ -535,7 +533,13 @@ public class MainController implements Initializable{
         //getting the selected song
         Song selectedSong = table.getItems().get(table.getSelectionModel().getSelectedIndex());
         //and assigning in to the album
-        result.ifPresent(album -> new DAOSong().addToAlbum(album, selectedSong));
+        result.ifPresent(album -> {
+            DAOSong dao = new DAOSong();
+            if (!new DAOPlaylist().containsSong(album.getPlayList(), selectedSong))
+                dao.addToPlaylist(album.getPlayList(), selectedSong);
+            if (!new DAOAlbum().containsSong(album, selectedSong))
+                dao.addToAlbum(album, selectedSong);
+        });
     }
 
     /**
@@ -749,7 +753,6 @@ public class MainController implements Initializable{
         //creating a new thread
         Thread musicParsingThread = new Thread(() -> {
             //getting Data access object for the Song class
-            //importedSongs = new ArrayList<>();
             DAOSong dao = new DAOSong();
             //to detect when no more music files remain unnoticed
             int repeats = 0;
@@ -774,17 +777,14 @@ public class MainController implements Initializable{
                             e.printStackTrace();
                         }
                         //if saved successfully
-                        if (dao.create(song)) {
-                            container.assignSong(song);
-                            //and remove the player from the collection
-                            players.remove(player);
+                        dao.create(song);
+                        if (!container.containsSong(container, dao.get(song.getName()))) {
+                            //adding the song to the container
+                            container.assignSong(dao.get(song.getName()));
+                            table.getItems().add(dao.get(file.getName()));
                         }
-                        else{
-                            container.assignSong(new DAOSong().get(song.getName()));
-                            //probably already added or unsupported. So just removing it
-                            players.remove(player);
-                        }
-                        table.getItems().add(dao.get(file.getName()));
+                        //And removing it
+                        players.remove(player);
                     });
                 }
                 else{
@@ -1000,6 +1000,8 @@ public class MainController implements Initializable{
         table.getItems().clear();
         //add all songs from the database to the tableView
         table.getItems().addAll(new DAOSong().getAll());
+        table_playlists.getSelectionModel().clearSelection();
+        table_albums.getSelectionModel().clearSelection();
 
     }
 

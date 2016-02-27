@@ -8,6 +8,7 @@ import javafx.util.Duration;
 import mp3.controllers.MainController;
 import mp3.model.Song;
 
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -54,7 +55,7 @@ public class MP3Player {
                                     //and player's current duration
                                     double currentTime = player.getCurrentTime().toSeconds();
                                     //set button text to "pause"
-                                    updateMessage("pause");
+                                    updateMessage("||");
                                     //update slider
                                     updateValue(100 * currentTime / duration);
                                     //get duration in minutes
@@ -69,19 +70,19 @@ public class MP3Player {
                                 }
                                 //if stopped
                                 case STOPPED: {
-                                    updateMessage("play");
+                                    updateMessage(">");
                                     break;
                                 }
                                 //if paused
                                 case PAUSED: {
                                     //change button text to "go"
-                                    updateMessage("go");
+                                    updateMessage(">");
                                     break;
                                 }
                             }
                         } else {
                             //if not playing anything, set values o default
-                            updateMessage("play");
+                            updateMessage(">");
                             updateTitle("0:0/0:0");
                             updateValue(0);
                         }

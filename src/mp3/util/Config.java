@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * File for saving / getting data from a config file
+ * Class for saving / getting data from a config file
  */
 public class Config {
 

@@ -164,7 +164,16 @@ public class Album implements SongsContainer {
 
     @Override
     public synchronized boolean assignSong(Song song) {
+        Playlist playlist = getPlayList();
+        if (!playlist.containsSong(playlist, song)){
+            playlist.assignSong(song);
+        }
         DAOAlbum dao = new DAOAlbum();
         return new DAOSong().addToAlbum(dao.get(getName(), getPlayList()), song);
+    }
+
+    @Override
+    public boolean containsSong(SongsContainer container, Song song) {
+        return new DAOAlbum().containsSong((Album)container, song);
     }
 }

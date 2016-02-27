@@ -109,4 +109,9 @@ public class Playlist implements SongsContainer{
         DAOPlaylist dao = new DAOPlaylist();
         return new DAOSong().addToPlaylist(dao.get(getName()), song);
     }
+
+    @Override
+    public boolean containsSong(SongsContainer container, Song song) {
+        return new DAOPlaylist().containsSong((Playlist)container, song);
+    }
 }
