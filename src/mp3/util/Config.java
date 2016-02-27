@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * Created by Spring on 2/24/2016.
+ * File for saving / getting data from a config file
  */
 public class Config {
 
@@ -17,17 +17,26 @@ public class Config {
 
     }
 
+    /**
+     * Singleton implementation
+     * @return singleton instance of an object
+     */
     public static Config getInstance(){
         if (instance == null){
             synchronized (Object.class) {
                 if (instance == null) {
+                    //if not exists, create
                     instance = new Config();
+                    //init file
                     instance.properties = new Properties();
                     try {
+                        //if not exists
                         File configFile = new File(CONFIG_FILE_PATH);
                         if (!configFile.exists()){
+                            //create it
                             configFile.createNewFile();
                         }
+                        //load file
                         instance.properties.load(new FileInputStream(CONFIG_FILE_PATH));
                     }
                     catch (IOException ex){
@@ -36,14 +45,24 @@ public class Config {
                 }
             }
         }
+        //return singleton instance
         return instance;
     }
 
+    /**
+     * Read value from the property file by the given key
+     * @param key that matches the desired value
+     * @return value if exists
+     */
     public String getParameter(String key){
-
         return getInstance().properties.getProperty(key);
     }
 
+    /**
+     * Save/update value in the config file
+     * @param key of the property
+     * @param value of the property
+     */
     public void setParameter(String key, String value){
         getInstance().properties.setProperty(key, value);
         try {

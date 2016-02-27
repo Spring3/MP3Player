@@ -1,6 +1,7 @@
 package mp3.dao;
 
 import mp3.model.Album;
+import mp3.model.Playlist;
 import mp3.model.Song;
 import mp3.util.DbManager;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Spring on 2/25/2016.
+ * Data access object for the album instance
  */
 public class DAOAlbum implements IDAO<Album> {
 
@@ -49,12 +50,19 @@ public class DAOAlbum implements IDAO<Album> {
         return result;
     }
 
-    public Album get(String name) {
+    /**
+     * Gets the album from the database by the given name
+     * @param name the name of the album to fetch
+     * @param parent the parent palylist of the album
+     * @return the album object if it was found. Otherwise, returns null
+     */
+    public Album get(String name, Playlist parent) {
         Album result = null;
         try{
             Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE name=?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE name=? AND playlist_id=?");
             statement.setString(1, name);
+            statement.setInt(2, parent.getId());
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 int albumId = resultSet.getInt(1);
@@ -102,6 +110,11 @@ public class DAOAlbum implements IDAO<Album> {
         return result;
     }
 
+    /**
+     * Gets all songs from the album
+     * @param album the object of the album
+     * @return the list of songs, found in the album. If none, returns an empty list
+     */
     public List<Song> getAllSongs(Album album){
         List<Song> result = new ArrayList<>();
         try{

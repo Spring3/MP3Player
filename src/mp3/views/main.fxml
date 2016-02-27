@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
@@ -32,19 +33,9 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Select Folder">
+                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Select main music folder">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem fx:id="mItem_newPlaylist" mnemonicParsing="false" onAction="#createPlayList" text="New Playlist">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem fx:id="mItem_newAlbum" mnemonicParsing="false" onAction="#createAlbum" text="New Album">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
                     <MenuItem fx:id="mItem_Close" mnemonicParsing="false" onAction="#shutdown" text="Close">
@@ -60,18 +51,23 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="table" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="table" layoutY="42.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="671.0" prefWidth="1056.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
                      <columns>
                         <TableColumn fx:id="tCol_song" editable="false" maxWidth="300.0" minWidth="240.0" prefWidth="240.0" text="Song" />
                         <TableColumn fx:id="tCol_Duration" editable="false" maxWidth="168.0" minWidth="100.0" prefWidth="100.0" text="Duration" />
                         <TableColumn fx:id="tCol_Bitrate" editable="false" maxWidth="110.0" minWidth="100.0" prefWidth="100.0" text="Bitrate" />
                      </columns>
                   </TableView>
+                  <Label fx:id="label_header" alignment="CENTER" layoutX="444.0" layoutY="4.0" text="All songs" textAlignment="CENTER" AnchorPane.bottomAnchor="674.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </center>
          <bottom>
-            <AnchorPane prefHeight="62.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="bottomAnchorPane" prefHeight="62.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
                   <Slider fx:id="slider" blockIncrement="0.0" majorTickUnit="1.0" minorTickCount="0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
                   <Label fx:id="lbl_duration" alignment="CENTER" layoutX="123.0" layoutY="23.0" prefHeight="17.0" prefWidth="67.0" text="0:00/0:00" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="23.0" />

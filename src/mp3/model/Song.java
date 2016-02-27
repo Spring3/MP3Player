@@ -3,7 +3,7 @@ package mp3.model;
 import javafx.beans.property.*;
 
 /**
- * Created by Spring on 2/25/2016.
+ * Class for keeping the song info
  */
 public class Song {
 
@@ -13,6 +13,9 @@ public class Song {
         GOOD
     }
 
+    /**
+     * Creates the default song instance
+     */
     public Song(){
         name = new SimpleStringProperty();
         path = new SimpleStringProperty();
@@ -21,6 +24,14 @@ public class Song {
         durationHumanFriendly = new SimpleStringProperty();
     }
 
+    /**
+     * Initializes the song class.
+     * @param name name of the song
+     * @param path uri path to the sound file
+     * @param duration duration in seconds
+     * @param bitrate bitrate of the sound file
+     * @param quality quality of the sound file
+     */
     public Song(String name, String path, int duration, int bitrate, Quality quality){
         this.name = new SimpleStringProperty(name);
         this.path = new SimpleStringProperty(path);
@@ -30,8 +41,6 @@ public class Song {
         setQuality(quality);
     }
 
-
-
     private int id;
     private StringProperty name;
     private StringProperty durationHumanFriendly;
@@ -40,76 +49,148 @@ public class Song {
     private IntegerProperty bitrate;
     private Quality quality;
 
+    /**
+     * Returns the id of this object in the database.
+     * @return Returns null if the object was not updated from the database
+     */
     public int getId(){
         return id;
     }
 
+    /**
+     * Sets the id of this object
+     * @param id id from the database
+     */
     public void setId(int id){
         this.id = id;
     }
 
+    /**
+     * Get the name of the sound file
+     * @return Returns the name of the sound file
+     */
     public String getName() {
         return name.get();
     }
 
+    /**
+     * Get the property, containing the name of the sound file
+     * @return the property, containing the name of the sound file
+     */
     public StringProperty getNameProperty(){
         return name;
     }
 
+    /**
+     * Sets the name for the sound file
+     * @param name the name of the sound file. Will be added to the name property
+     */
     public void setName(String name) {
         this.name.set(name);
     }
 
+    /**
+     * Gets the uri path to the sound file on local file system
+     * @return the uri path to the sound file
+     */
     public String getPath() {
         return path.get();
     }
 
+    /**
+     * Sets the uri path to the sound file on local file system
+     * @param path the uri path to the sound file
+     */
     public void setPath(String path) {
         this.path.set(path);
     }
 
+    /**
+     * Gets the property, which contains the path of the sound file
+     * @return the property, which contains the path of the sound file
+     */
     public StringProperty getPathProperty(){
         return path;
     }
 
+    /**
+     * Gets the duration of the sound file
+     * @return the duration in seconds
+     */
     public int getDuration() {
         return duration.get();
     }
 
+    /**
+     * Sets the duration of the sound file
+     * @param duration the duration in seconds
+     */
     public void setDuration(int duration) {
         this.duration.set(duration);
     }
 
+    /**
+     * Gets the property, containing the duration of the sound file
+     * @return the property, containing the duration of the sound file
+     */
     public IntegerProperty getDurationProperty(){
         return duration;
     }
 
+    /**
+     * Gets the bitrate of the sound file
+     * @return the bitrate of the sound file
+     */
     public int getBitrate() {
         return bitrate.get();
     }
 
+    /**
+     * Sets the bitrate of the sound file
+     * @param bitrate the bitrate of the sound file
+     */
     public void setBitrate(int bitrate) {
         this.bitrate.set(bitrate);
     }
 
+    /**
+     * Gets the property, containing the bitrate of the sound file
+     * @return the property, containing the bitrate of the sound file
+     */
     public IntegerProperty getBitrateProperty(){
         return bitrate;
     }
 
+    /**
+     * Gets the quality of the sound file
+     * @return the quality of the sound file
+     */
     public Quality getQuality() {
         return quality;
     }
 
+    /**
+     * Sets the quality of the sound file
+     * @param quality the quality of the sound file
+     */
     public void setQuality(Quality quality) {
         this.quality = quality;
     }
 
+    /**
+     * Converts the duration in seconds to tha human friendly representation in format of #mins:#seconds
+     * @param seconds the duration in seconds
+     */
     private void setDurationHumanFriendly(int seconds){
         int minutes = seconds / 60;
         int secodns = seconds % 60;
         durationHumanFriendly = new SimpleStringProperty(String.format("%d:%d", minutes, secodns));
     }
 
+    /**
+     * Gets the human friendly variant of the sound file duration
+     * @return the human friendly variant of the sound file duration
+     */
     public String getDurationHumanFriendly(){
         return durationHumanFriendly.get();
     }

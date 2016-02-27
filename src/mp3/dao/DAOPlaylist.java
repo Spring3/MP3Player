@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Spring on 2/25/2016.
+ * Data access object for the playlist instance
  */
 public class DAOPlaylist implements IDAO<Playlist> {
 
@@ -45,6 +45,11 @@ public class DAOPlaylist implements IDAO<Playlist> {
         return result;
     }
 
+    /**
+     * Gets the playlist from the database by given name
+     * @param name the name of the desired playlist
+     * @return the playlist object if it was found. Otherwise, returns null
+     */
     public Playlist get(String name) {
         Playlist result = null;
         try{
@@ -94,6 +99,11 @@ public class DAOPlaylist implements IDAO<Playlist> {
         return result;
     }
 
+    /**
+     * Gets the list of albums in the playlist
+     * @param value the parent playlist
+     * @return the list of albums if they exist. Otherwise, returns an empty list
+     */
     public List<Album> getAllAlbums(Playlist value) {
         List<Album> result = new ArrayList<>();
         try{
@@ -121,6 +131,11 @@ public class DAOPlaylist implements IDAO<Playlist> {
         return result;
     }
 
+    /**
+     * Gets all songs from the playlist
+     * @param playlist the parent playlist
+     * @return the list of the songs in the playlist, if there is any. Otherwise, returns empty list
+     */
     public List<Song> getAllSongs(Playlist playlist){
         List<Song> result = new ArrayList<>();
         try{

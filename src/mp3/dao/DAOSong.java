@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Spring on 2/25/2016.
+ * Data access object for the song instance
  */
 public class DAOSong implements IDAO<Song>{
 
@@ -53,6 +53,11 @@ public class DAOSong implements IDAO<Song>{
         return result;
     }
 
+    /**
+     * Searches for the song instance by the name
+     * @param name the name of the song
+     * @return the song object if it was found. Otherwise, returns null
+     */
     public Song get(String name) {
         Song result = null;
         try{
@@ -111,64 +116,6 @@ public class DAOSong implements IDAO<Song>{
         return result;
     }
 
-    public List<Song> getAll(Playlist playlist) {
-        List<Song> result = new ArrayList<>();
-        try{
-            Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_playlist as sp ON sp.song_id = song.id INNER JOIN playlist ON playlist.id = ? ");
-            statement.setInt(1, playlist.getId());
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()){
-                int songId = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String path = resultSet.getString(3);
-                int duration = resultSet.getInt(4);
-                int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
-                Song song = new Song(name, path, duration, bitrate, quality);
-                song.setId(songId);
-                result.add(song);
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
-
-        }
-        catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return result;
-    }
-
-    public List<Song> getAll(Album album) {
-        List<Song> result = new ArrayList<>();
-        try{
-            Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_album as sa ON sa.song_id = song.id INNER JOIN album ON album.id = ? ");
-            statement.setInt(1, album.getId());
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()){
-                int songId = resultSet.getInt(1);
-                String name = resultSet.getString(2);
-                String path = resultSet.getString(3);
-                int duration = resultSet.getInt(4);
-                int bitrate = resultSet.getInt(5);
-                Song.Quality quality = Song.Quality.valueOf(resultSet.getString(6));
-                Song song = new Song(name, path, duration, bitrate, quality);
-                song.setId(songId);
-                result.add(song);
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
-
-        }
-        catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return result;
-    }
-
     @Override
     public boolean create(Song value) {
         try{
@@ -190,6 +137,12 @@ public class DAOSong implements IDAO<Song>{
         }
     }
 
+    /**
+     * Marks the song file as added to the given playlist
+     * @param playlist the playlist that will be the parent for the song file
+     * @param song the song that will be connected to the playlist
+     * @return true if the song was added to the playlist. Otherwise returns false
+     */
     public boolean addToPlaylist(Playlist playlist, Song song) {
         try{
             Connection connection = manager.getConnection();
@@ -207,6 +160,12 @@ public class DAOSong implements IDAO<Song>{
         }
     }
 
+    /**
+     * Marks the song file as added to the given playlist
+     * @param album the album that will be the parent for the song file
+     * @param song the song that will be connected to the album
+     * @return true if the song was added to the album. Otherwise returns false
+     */
     public boolean addToAlbum(Album album, Song song) {
         try{
             Connection connection = manager.getConnection();

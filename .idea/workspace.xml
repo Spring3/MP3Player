@@ -70,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/util/DbManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="115" selection-start-line="51" selection-start-column="115" selection-end-line="51" selection-end-column="115" />
+              <caret line="69" column="109" selection-start-line="69" selection-start-column="109" selection-end-line="69" selection-end-column="109" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,19 +82,17 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
+              <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
-                <marker date="1456438176886" expanded="true" signature="1426:1461" placeholder="SELECT * FRO..playlist..." />
-                <marker date="1456438176886" expanded="true" signature="2288:2310" placeholder="SELECT * FRO..playlist..." />
-                <marker date="1456438176886" expanded="true" signature="3130:3144" placeholder="SELECT * FRO..playlist..." />
-                <marker date="1456438176886" expanded="true" signature="3130:3171" placeholder="SELECT * FRO..album..." />
-                <marker date="1456438176886" expanded="true" signature="4159:4245" placeholder="SELECT * FRO..album..." />
-                <marker date="1456438176886" expanded="true" signature="5320:5357" placeholder="INSERT INTO ..." />
-                <marker date="1456438176886" expanded="true" signature="5864:5890" placeholder="UPDATE playl..." />
-                <marker date="1456438176886" expanded="true" signature="5864:5901" placeholder="UPDATE playl..." />
-                <marker date="1456438176886" expanded="true" signature="6456:6487" placeholder="DELETE FROM ..." />
+                <marker date="1456577138412" expanded="true" signature="631:664" placeholder="SELECT * FRO..playlist..." />
+                <marker date="1456577138412" expanded="true" signature="1640:1675" placeholder="SELECT * FRO..playlist..." />
+                <marker date="1456577138412" expanded="true" signature="2502:2524" placeholder="SELECT * FRO..playlist..." />
+                <marker date="1456577138412" expanded="true" signature="3529:3570" placeholder="SELECT * FRO..album..." />
+                <marker date="1456577138412" expanded="true" signature="4758:4844" placeholder="SELECT * FRO..song..." />
+                <marker date="1456577138412" expanded="true" signature="5919:5956" placeholder="INSERT INTO ..." />
+                <marker date="1456577138412" expanded="true" signature="6463:6500" placeholder="UPDATE playl..." />
+                <marker date="1456577138412" expanded="true" signature="7055:7086" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -104,45 +102,19 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+              <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1456442187585" expanded="true" signature="677:707" placeholder="SELECT * FRO..album..." />
-                <marker date="1456442187585" expanded="true" signature="1599:1631" placeholder="SELECT * FRO..album..." />
-                <marker date="1456442187585" expanded="true" signature="2569:2588" placeholder="SELECT * FRO..album..." />
-                <marker date="1456442187585" expanded="true" signature="3512:3526" placeholder="SELECT * FRO..album..." />
-                <marker date="1456442187585" expanded="true" signature="3512:3530" placeholder="SELECT * FRO..song..." />
-                <marker date="1456442187585" expanded="true" signature="3512:3590" placeholder="SELECT * FRO..song..." />
-                <marker date="1456442187585" expanded="true" signature="4659:4721" placeholder="INSERT INTO ..." />
-                <marker date="1456442187585" expanded="true" signature="5343:5403" placeholder="UPDATE playl..." />
-                <marker date="1456442187585" expanded="true" signature="6073:6101" placeholder="DELETE FROM ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-              <folding>
-                <element signature="e#2525#2526#0" expanded="true" />
-                <element signature="e#2575#2576#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Album.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1467#1468#0" expanded="true" />
-                <element signature="e#1494#1495#0" expanded="true" />
+                <marker date="1456579398747" expanded="true" signature="714:744" placeholder="SELECT * FRO..album..." />
+                <marker date="1456579398747" expanded="true" signature="1904:1936" placeholder="SELECT * FRO..album..." />
+                <marker date="1456579398747" expanded="true" signature="1904:1954" placeholder="SELECT * FRO..album..." />
+                <marker date="1456579398747" expanded="true" signature="2941:2960" placeholder="SELECT * FRO..album..." />
+                <marker date="1456579398747" expanded="true" signature="4066:4080" placeholder="SELECT * FRO..album..." />
+                <marker date="1456579398747" expanded="true" signature="4066:4084" placeholder="SELECT * FRO..song..." />
+                <marker date="1456579398747" expanded="true" signature="4066:4144" placeholder="SELECT * FRO..song..." />
+                <marker date="1456579398747" expanded="true" signature="5213:5275" placeholder="INSERT INTO ..." />
+                <marker date="1456579398747" expanded="true" signature="5897:5957" placeholder="UPDATE playl..." />
+                <marker date="1456579398747" expanded="true" signature="6627:6655" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -154,8 +126,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.965517">
-              <caret line="74" column="118" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state vertical-scroll-proportion="-6.5689654">
+              <caret line="69" column="47" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -164,16 +136,10 @@
       <file leaf-file-name="MP3Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mp3/util/MP3Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.62069">
-              <caret line="52" column="53" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="218" column="50" selection-start-line="218" selection-start-column="49" selection-end-line="218" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3060#3061#0" expanded="true" />
-                <element signature="e#3100#3101#0" expanded="true" />
-                <element signature="e#3153#3154#0" expanded="true" />
-                <element signature="e#3189#3190#0" expanded="true" />
-                <element signature="e#6078#6079#0" expanded="true" />
-                <element signature="e#6108#6109#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,9 +149,86 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/views/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="58" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Album.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="155" column="62" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1969#1970#0" expanded="true" />
+                <element signature="e#2000#2001#0" expanded="true" />
+                <element signature="e#2146#2147#0" expanded="true" />
+                <element signature="e#2177#2178#0" expanded="true" />
+                <element signature="e#2302#2303#0" expanded="true" />
+                <element signature="e#2335#2336#0" expanded="true" />
+                <element signature="e#2526#2527#0" expanded="true" />
+                <element signature="e#2553#2554#0" expanded="true" />
+                <element signature="e#2683#2684#0" expanded="true" />
+                <element signature="e#2718#2719#0" expanded="true" />
+                <element signature="e#2864#2865#0" expanded="true" />
+                <element signature="e#2900#2901#0" expanded="true" />
+                <element signature="e#3059#3060#0" expanded="true" />
+                <element signature="e#3092#3093#0" expanded="true" />
+                <element signature="e#3211#3212#0" expanded="true" />
+                <element signature="e#3273#3274#0" expanded="true" />
+                <element signature="e#3434#3435#0" expanded="true" />
+                <element signature="e#3473#3474#0" expanded="true" />
+                <element signature="e#4361#4362#0" expanded="true" />
+                <element signature="e#4393#4394#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mp3/model/Playlist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="90" column="64" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1016#1017#0" expanded="true" />
+                <element signature="e#1163#1164#0" expanded="true" />
+                <element signature="e#1194#1195#0" expanded="true" />
+                <element signature="e#1317#1318#0" expanded="true" />
+                <element signature="e#1350#1351#0" expanded="true" />
+                <element signature="e#1486#1487#0" expanded="true" />
+                <element signature="e#1521#1522#0" expanded="true" />
+                <element signature="e#1710#1711#0" expanded="true" />
+                <element signature="e#1737#1738#0" expanded="true" />
+                <element signature="e#2252#2253#0" expanded="true" />
+                <element signature="e#2284#2285#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.52409637">
+              <caret line="678" column="30" selection-start-line="678" selection-start-column="30" selection-end-line="678" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#initialize#0;class#MainController#0" expanded="false" />
+                <element signature="method#initializePlaylistsTableAndMenu#0;class#MainController#0" expanded="false" />
+                <element signature="method#initializeSongsTableAndMenu#0;class#MainController#0" expanded="false" />
+                <element signature="method#showChoiceBoxForPlaylistAdding#0;class#MainController#0" expanded="false" />
+                <element signature="method#showChoiceBoxForAlbumAdding#0;class#MainController#0" expanded="false" />
+                <element signature="method#showWarning#0;class#MainController#0" expanded="false" />
+                <element signature="method#tryGetMusic#0;class#MainController#0" expanded="false" />
+                <element signature="e#34799#34800#0" expanded="true" />
+                <element signature="e#34859#34860#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -195,39 +238,17 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOSong.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
+              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1456438206602" expanded="true" signature="698:727" placeholder="SELECT * FRO..song..." />
-                <marker date="1456438206602" expanded="true" signature="1759:1790" placeholder="SELECT * FRO..song..." />
-                <marker date="1456438206602" expanded="true" signature="2866:2884" placeholder="SELECT * FRO..song..." />
-                <marker date="1456438206602" expanded="true" signature="3947:4059" placeholder="SELECT * FRO..song..." />
-                <marker date="1456438206602" expanded="true" signature="5168:5271" placeholder="SELECT * FRO..song..." />
-                <marker date="1456438206602" expanded="true" signature="6340:6419" placeholder="INSERT INTO ..." />
-                <marker date="1456438206602" expanded="true" signature="7124:7162" placeholder="INSERT INTO ..." />
-                <marker date="1456438206602" expanded="true" signature="7680:7715" placeholder="INSERT INTO ..." />
-                <marker date="1456438206602" expanded="true" signature="8228:8315" placeholder="UPDATE song ..." />
-                <marker date="1456438206602" expanded="true" signature="9091:9118" placeholder="DELETE FROM ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7344878">
-              <caret line="363" column="66" selection-start-line="363" selection-start-column="42" selection-end-line="363" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#20638#20639#0" expanded="true" />
-                <element signature="e#20678#20679#0" expanded="true" />
-                <element signature="e#20734#20735#0" expanded="true" />
-                <element signature="e#20765#20766#0" expanded="true" />
-                <element signature="e#20821#20822#0" expanded="true" />
-                <element signature="e#20871#20872#0" expanded="true" />
-                <element signature="e#20927#20928#0" expanded="true" />
-                <element signature="e#20977#20978#0" expanded="true" />
+                <marker date="1456576899975" expanded="true" signature="707:736" placeholder="SELECT * FRO..song..." />
+                <marker date="1456576899975" expanded="true" signature="1946:1977" placeholder="SELECT * FRO..song..." />
+                <marker date="1456576899975" expanded="true" signature="3053:3071" placeholder="SELECT * FRO..song..." />
+                <marker date="1456576899975" expanded="true" signature="4091:4170" placeholder="INSERT INTO ..." />
+                <marker date="1456576899975" expanded="true" signature="5177:5215" placeholder="INSERT INTO ..." />
+                <marker date="1456576899975" expanded="true" signature="6023:6058" placeholder="INSERT INTO ..." />
+                <marker date="1456576899975" expanded="true" signature="6571:6658" placeholder="UPDATE song ..." />
+                <marker date="1456576899975" expanded="true" signature="7434:7461" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -258,22 +279,22 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/mp3/util/Config.java" />
-        <option value="$PROJECT_DIR$/src/mp3/dao/IDAO.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAO.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAOSOng.java" />
-        <option value="$PROJECT_DIR$/src/mp3/util/DbManager.java" />
         <option value="$PROJECT_DIR$/src/mp3/util/MediaPlayer.java" />
-        <option value="$PROJECT_DIR$/src/mp3/model/Playlist.java" />
-        <option value="$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java" />
-        <option value="$PROJECT_DIR$/src/mp3/dao/DAOSong.java" />
-        <option value="$PROJECT_DIR$/src/mp3/model/Album.java" />
-        <option value="$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java" />
-        <option value="$PROJECT_DIR$/src/mp3/views/main.fxml" />
-        <option value="$PROJECT_DIR$/src/mp3/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/mp3/dao/IDAO.java" />
+        <option value="$PROJECT_DIR$/src/mp3/util/Config.java" />
         <option value="$PROJECT_DIR$/src/mp3/views/Main.java" />
-        <option value="$PROJECT_DIR$/src/mp3/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/mp3/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/mp3/model/Playlist.java" />
+        <option value="$PROJECT_DIR$/src/mp3/model/Album.java" />
+        <option value="$PROJECT_DIR$/src/mp3/dao/DAOSong.java" />
+        <option value="$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java" />
+        <option value="$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java" />
+        <option value="$PROJECT_DIR$/src/mp3/util/DbManager.java" />
+        <option value="$PROJECT_DIR$/src/mp3/views/main.fxml" />
         <option value="$PROJECT_DIR$/src/mp3/util/MP3Player.java" />
+        <option value="$PROJECT_DIR$/src/mp3/controllers/MainController.java" />
       </list>
     </option>
   </component>
@@ -397,6 +418,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -792,12 +817,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1456343922441" duration="44906000" />
-      <workItem from="1456513107099" duration="23366000" />
+      <workItem from="1456513107099" duration="41755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69574000" />
+    <option name="totallyTimeSpent" value="87963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -805,7 +830,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -833,37 +858,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18054055" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22054054" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -878,7 +872,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="40" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/mp3/util/MP3Player.java</url>
+          <line>218</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="45" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -903,16 +905,14 @@
           <caret line="136" column="81" selection-start-line="136" selection-start-column="81" selection-end-line="136" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="1426:1461" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="2288:2310" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3144" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3171" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="4159:4245" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="5320:5357" placeholder="INSERT INTO ..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5890" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5901" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="6456:6487" placeholder="DELETE FROM ..." />
+            <marker date="1456577138412" expanded="true" signature="631:664" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="1640:1675" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="2502:2524" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="3529:3570" placeholder="SELECT * FRO..album..." />
+            <marker date="1456577138412" expanded="true" signature="4758:4844" placeholder="SELECT * FRO..song..." />
+            <marker date="1456577138412" expanded="true" signature="5919:5956" placeholder="INSERT INTO ..." />
+            <marker date="1456577138412" expanded="true" signature="6463:6500" placeholder="UPDATE playl..." />
+            <marker date="1456577138412" expanded="true" signature="7055:7086" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -923,15 +923,16 @@
           <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1456442187585" expanded="true" signature="677:707" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="1599:1631" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="2569:2588" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3526" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3530" placeholder="SELECT * FRO..song..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3590" placeholder="SELECT * FRO..song..." />
-            <marker date="1456442187585" expanded="true" signature="4659:4721" placeholder="INSERT INTO ..." />
-            <marker date="1456442187585" expanded="true" signature="5343:5403" placeholder="UPDATE playl..." />
-            <marker date="1456442187585" expanded="true" signature="6073:6101" placeholder="DELETE FROM ..." />
+            <marker date="1456579398747" expanded="true" signature="714:744" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="1904:1936" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="1904:1954" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="2941:2960" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4080" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4084" placeholder="SELECT * FRO..song..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4144" placeholder="SELECT * FRO..song..." />
+            <marker date="1456579398747" expanded="true" signature="5213:5275" placeholder="INSERT INTO ..." />
+            <marker date="1456579398747" expanded="true" signature="5897:5957" placeholder="UPDATE playl..." />
+            <marker date="1456579398747" expanded="true" signature="6627:6655" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -941,8 +942,40 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="28" />
           <folding>
-            <element signature="e#2525#2526#0" expanded="true" />
-            <element signature="e#2575#2576#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1895#1896#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#2147#2148#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+            <element signature="e#2360#2361#0" expanded="true" />
+            <element signature="e#2517#2518#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2720#2721#0" expanded="true" />
+            <element signature="e#2755#2756#0" expanded="true" />
+            <element signature="e#2956#2957#0" expanded="true" />
+            <element signature="e#2983#2984#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3301#3302#0" expanded="true" />
+            <element signature="e#3344#3345#0" expanded="true" />
+            <element signature="e#3550#3551#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3715#3716#0" expanded="true" />
+            <element signature="e#3751#3752#0" expanded="true" />
+            <element signature="e#3904#3905#0" expanded="true" />
+            <element signature="e#3945#3946#0" expanded="true" />
+            <element signature="e#4148#4149#0" expanded="true" />
+            <element signature="e#4178#4179#0" expanded="true" />
+            <element signature="e#4316#4317#0" expanded="true" />
+            <element signature="e#4346#4347#0" expanded="true" />
+            <element signature="e#4503#4504#0" expanded="true" />
+            <element signature="e#4541#4542#0" expanded="true" />
+            <element signature="e#5141#5142#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,8 +986,26 @@
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#2000#2001#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#2177#2178#0" expanded="true" />
+            <element signature="e#2302#2303#0" expanded="true" />
+            <element signature="e#2335#2336#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2553#2554#0" expanded="true" />
+            <element signature="e#2683#2684#0" expanded="true" />
+            <element signature="e#2718#2719#0" expanded="true" />
+            <element signature="e#2864#2865#0" expanded="true" />
+            <element signature="e#2900#2901#0" expanded="true" />
+            <element signature="e#3059#3060#0" expanded="true" />
+            <element signature="e#3092#3093#0" expanded="true" />
+            <element signature="e#3211#3212#0" expanded="true" />
+            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3473#3474#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4393#4394#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -976,12 +1027,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3060#3061#0" expanded="true" />
-            <element signature="e#3100#3101#0" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-            <element signature="e#3189#3190#0" expanded="true" />
-            <element signature="e#6078#6079#0" expanded="true" />
-            <element signature="e#6108#6109#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -992,16 +1037,14 @@
           <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1456438206602" expanded="true" signature="698:727" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="1759:1790" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="2866:2884" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="3947:4059" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="5168:5271" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="6340:6419" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7124:7162" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7680:7715" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="8228:8315" placeholder="UPDATE song ..." />
-            <marker date="1456438206602" expanded="true" signature="9091:9118" placeholder="DELETE FROM ..." />
+            <marker date="1456576899975" expanded="true" signature="707:736" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="1946:1977" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="3053:3071" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="4091:4170" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="5177:5215" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="6023:6058" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="6571:6658" placeholder="UPDATE song ..." />
+            <marker date="1456576899975" expanded="true" signature="7434:7461" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -1012,14 +1055,15 @@
           <caret line="182" column="13" selection-start-line="179" selection-start-column="33" selection-end-line="182" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#20638#20639#0" expanded="true" />
-            <element signature="e#20678#20679#0" expanded="true" />
-            <element signature="e#20734#20735#0" expanded="true" />
-            <element signature="e#20765#20766#0" expanded="true" />
-            <element signature="e#20821#20822#0" expanded="true" />
-            <element signature="e#20871#20872#0" expanded="true" />
-            <element signature="e#20927#20928#0" expanded="true" />
-            <element signature="e#20977#20978#0" expanded="true" />
+            <element signature="method#initialize#0;class#MainController#0" expanded="false" />
+            <element signature="method#initializePlaylistsTableAndMenu#0;class#MainController#0" expanded="false" />
+            <element signature="method#initializeSongsTableAndMenu#0;class#MainController#0" expanded="false" />
+            <element signature="method#showChoiceBoxForPlaylistAdding#0;class#MainController#0" expanded="false" />
+            <element signature="method#showChoiceBoxForAlbumAdding#0;class#MainController#0" expanded="false" />
+            <element signature="method#showWarning#0;class#MainController#0" expanded="false" />
+            <element signature="method#tryGetMusic#0;class#MainController#0" expanded="false" />
+            <element signature="e#34799#34800#0" expanded="true" />
+            <element signature="e#34859#34860#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1028,6 +1072,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,20 +1084,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/IDAO.java">
+    <entry file="file://$PROJECT_DIR$/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/util/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45868465">
-          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="40" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/IDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+          <folding>
+            <element signature="e#1587#1588#0" expanded="true" />
+            <element signature="e#1612#1613#0" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
+            <element signature="e#1895#1896#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#2120#2121#0" expanded="true" />
+            <element signature="e#2147#2148#0" expanded="true" />
+            <element signature="e#2325#2326#0" expanded="true" />
+            <element signature="e#2360#2361#0" expanded="true" />
+            <element signature="e#2517#2518#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
+            <element signature="e#2720#2721#0" expanded="true" />
+            <element signature="e#2755#2756#0" expanded="true" />
+            <element signature="e#2956#2957#0" expanded="true" />
+            <element signature="e#2983#2984#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#3301#3302#0" expanded="true" />
+            <element signature="e#3344#3345#0" expanded="true" />
+            <element signature="e#3550#3551#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3715#3716#0" expanded="true" />
+            <element signature="e#3751#3752#0" expanded="true" />
+            <element signature="e#3904#3905#0" expanded="true" />
+            <element signature="e#3945#3946#0" expanded="true" />
+            <element signature="e#4148#4149#0" expanded="true" />
+            <element signature="e#4178#4179#0" expanded="true" />
+            <element signature="e#4316#4317#0" expanded="true" />
+            <element signature="e#4346#4347#0" expanded="true" />
+            <element signature="e#4503#4504#0" expanded="true" />
+            <element signature="e#4541#4542#0" expanded="true" />
+            <element signature="e#5141#5142#0" expanded="true" />
+            <element signature="e#5191#5192#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1060,29 +1155,100 @@
     <entry file="file://$PROJECT_DIR$/src/mp3/model/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+          <caret line="90" column="64" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#745#746#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
-            <element signature="e#1440#1441#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+            <element signature="e#1194#1195#0" expanded="true" />
+            <element signature="e#1317#1318#0" expanded="true" />
+            <element signature="e#1350#1351#0" expanded="true" />
+            <element signature="e#1486#1487#0" expanded="true" />
+            <element signature="e#1521#1522#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+            <element signature="e#1737#1738#0" expanded="true" />
+            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#2284#2285#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.properties">
+    <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="155" column="62" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1969#1970#0" expanded="true" />
+            <element signature="e#2000#2001#0" expanded="true" />
+            <element signature="e#2146#2147#0" expanded="true" />
+            <element signature="e#2177#2178#0" expanded="true" />
+            <element signature="e#2302#2303#0" expanded="true" />
+            <element signature="e#2335#2336#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2553#2554#0" expanded="true" />
+            <element signature="e#2683#2684#0" expanded="true" />
+            <element signature="e#2718#2719#0" expanded="true" />
+            <element signature="e#2864#2865#0" expanded="true" />
+            <element signature="e#2900#2901#0" expanded="true" />
+            <element signature="e#3059#3060#0" expanded="true" />
+            <element signature="e#3092#3093#0" expanded="true" />
+            <element signature="e#3211#3212#0" expanded="true" />
+            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="e#3434#3435#0" expanded="true" />
+            <element signature="e#3473#3474#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4393#4394#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1456579398747" expanded="true" signature="714:744" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="1904:1936" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="1904:1954" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="2941:2960" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4080" placeholder="SELECT * FRO..album..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4084" placeholder="SELECT * FRO..song..." />
+            <marker date="1456579398747" expanded="true" signature="4066:4144" placeholder="SELECT * FRO..song..." />
+            <marker date="1456579398747" expanded="true" signature="5213:5275" placeholder="INSERT INTO ..." />
+            <marker date="1456579398747" expanded="true" signature="5897:5957" placeholder="UPDATE playl..." />
+            <marker date="1456579398747" expanded="true" signature="6627:6655" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/util/DbManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="109" selection-start-line="69" selection-start-column="109" selection-end-line="69" selection-end-column="109" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="179" column="12" selection-start-line="179" selection-start-column="12" selection-end-line="179" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1456577138412" expanded="true" signature="631:664" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="1640:1675" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="2502:2524" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456577138412" expanded="true" signature="3529:3570" placeholder="SELECT * FRO..album..." />
+            <marker date="1456577138412" expanded="true" signature="4758:4844" placeholder="SELECT * FRO..song..." />
+            <marker date="1456577138412" expanded="true" signature="5919:5956" placeholder="INSERT INTO ..." />
+            <marker date="1456577138412" expanded="true" signature="6463:6500" placeholder="UPDATE playl..." />
+            <marker date="1456577138412" expanded="true" signature="7055:7086" placeholder="DELETE FROM ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,108 +1257,16 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.965517">
-          <caret line="74" column="118" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state vertical-scroll-proportion="-6.5689654">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/util/DbManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="115" selection-start-line="51" selection-start-column="115" selection-end-line="51" selection-end-column="115" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1456442187585" expanded="true" signature="677:707" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="1599:1631" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="2569:2588" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3526" placeholder="SELECT * FRO..album..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3530" placeholder="SELECT * FRO..song..." />
-            <marker date="1456442187585" expanded="true" signature="3512:3590" placeholder="SELECT * FRO..song..." />
-            <marker date="1456442187585" expanded="true" signature="4659:4721" placeholder="INSERT INTO ..." />
-            <marker date="1456442187585" expanded="true" signature="5343:5403" placeholder="UPDATE playl..." />
-            <marker date="1456442187585" expanded="true" signature="6073:6101" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="1426:1461" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="2288:2310" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3144" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3171" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="4159:4245" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="5320:5357" placeholder="INSERT INTO ..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5890" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5901" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="6456:6487" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#2525#2526#0" expanded="true" />
-            <element signature="e#2575#2576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOSong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1456438206602" expanded="true" signature="698:727" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="1759:1790" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="2866:2884" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="3947:4059" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="5168:5271" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="6340:6419" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7124:7162" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7680:7715" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="8228:8315" placeholder="UPDATE song ..." />
-            <marker date="1456438206602" expanded="true" signature="9091:9118" placeholder="DELETE FROM ..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/views/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="58" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1201,34 +1275,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/util/MP3Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.62069">
-          <caret line="52" column="53" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="218" column="50" selection-start-line="218" selection-start-column="49" selection-end-line="218" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3060#3061#0" expanded="true" />
-            <element signature="e#3100#3101#0" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-            <element signature="e#3189#3190#0" expanded="true" />
-            <element signature="e#6078#6079#0" expanded="true" />
-            <element signature="e#6108#6109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOSong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1456576899975" expanded="true" signature="707:736" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="1946:1977" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="3053:3071" placeholder="SELECT * FRO..song..." />
+            <marker date="1456576899975" expanded="true" signature="4091:4170" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="5177:5215" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="6023:6058" placeholder="INSERT INTO ..." />
+            <marker date="1456576899975" expanded="true" signature="6571:6658" placeholder="UPDATE song ..." />
+            <marker date="1456576899975" expanded="true" signature="7434:7461" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7344878">
-          <caret line="363" column="66" selection-start-line="363" selection-start-column="42" selection-end-line="363" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.52409637">
+          <caret line="678" column="30" selection-start-line="678" selection-start-column="30" selection-end-line="678" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#20638#20639#0" expanded="true" />
-            <element signature="e#20678#20679#0" expanded="true" />
-            <element signature="e#20734#20735#0" expanded="true" />
-            <element signature="e#20765#20766#0" expanded="true" />
-            <element signature="e#20821#20822#0" expanded="true" />
-            <element signature="e#20871#20872#0" expanded="true" />
-            <element signature="e#20927#20928#0" expanded="true" />
-            <element signature="e#20977#20978#0" expanded="true" />
+            <element signature="method#initialize#0;class#MainController#0" expanded="false" />
+            <element signature="method#initializePlaylistsTableAndMenu#0;class#MainController#0" expanded="false" />
+            <element signature="method#initializeSongsTableAndMenu#0;class#MainController#0" expanded="false" />
+            <element signature="method#showChoiceBoxForPlaylistAdding#0;class#MainController#0" expanded="false" />
+            <element signature="method#showChoiceBoxForAlbumAdding#0;class#MainController#0" expanded="false" />
+            <element signature="method#showWarning#0;class#MainController#0" expanded="false" />
+            <element signature="method#tryGetMusic#0;class#MainController#0" expanded="false" />
+            <element signature="e#34799#34800#0" expanded="true" />
+            <element signature="e#34859#34860#0" expanded="true" />
           </folding>
         </state>
       </provider>
