@@ -40,7 +40,7 @@
                         </MenuItem>
                     <MenuItem fx:id="mItem_Close" mnemonicParsing="false" onAction="#shutdown" text="Close">
                            <accelerator>
-                              <KeyCodeCombination alt="UP" code="ESCAPE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
                   </items>
