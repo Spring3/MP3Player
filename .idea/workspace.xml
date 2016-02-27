@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="MP3Player" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <ignored path="JavaFxApplication.iws" />
@@ -77,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="136" column="81" selection-start-line="136" selection-start-column="81" selection-end-line="136" selection-end-column="81" />
+              <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
@@ -120,8 +125,11 @@
         <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="28" />
-              <folding />
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding>
+                <element signature="e#2525#2526#0" expanded="true" />
+                <element signature="e#2575#2576#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,21 +155,37 @@
           </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.965517">
-              <caret line="81" column="118" selection-start-line="81" selection-start-column="118" selection-end-line="81" selection-end-column="118" />
+              <caret line="74" column="118" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MP3Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MP3Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mp3/util/MP3Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4292169">
-              <caret line="31" column="77" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+            <state vertical-scroll-proportion="-7.62069">
+              <caret line="52" column="53" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5674#5675#0" expanded="true" />
-                <element signature="e#5704#5705#0" expanded="true" />
+                <element signature="e#3060#3061#0" expanded="true" />
+                <element signature="e#3100#3101#0" expanded="true" />
+                <element signature="e#3153#3154#0" expanded="true" />
+                <element signature="e#3189#3190#0" expanded="true" />
+                <element signature="e#6078#6079#0" expanded="true" />
+                <element signature="e#6108#6109#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mp3/views/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="58" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,22 +213,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.931034">
-              <caret line="477" column="34" selection-start-line="477" selection-start-column="34" selection-end-line="477" selection-end-column="34" />
+            <state vertical-scroll-proportion="-3.7344878">
+              <caret line="363" column="66" selection-start-line="363" selection-start-column="42" selection-end-line="363" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#showAlbumCreationPopup#0;class#MainController#0" expanded="false" />
-                <element signature="e#18083#18084#0" expanded="true" />
-                <element signature="e#18123#18124#0" expanded="true" />
-                <element signature="e#18179#18180#0" expanded="true" />
-                <element signature="e#18210#18211#0" expanded="true" />
-                <element signature="e#18266#18267#0" expanded="true" />
-                <element signature="e#18316#18317#0" expanded="true" />
-                <element signature="e#18372#18373#0" expanded="true" />
-                <element signature="e#18422#18423#0" expanded="true" />
+                <element signature="e#20638#20639#0" expanded="true" />
+                <element signature="e#20678#20679#0" expanded="true" />
+                <element signature="e#20734#20735#0" expanded="true" />
+                <element signature="e#20765#20766#0" expanded="true" />
+                <element signature="e#20821#20822#0" expanded="true" />
+                <element signature="e#20871#20872#0" expanded="true" />
+                <element signature="e#20927#20928#0" expanded="true" />
+                <element signature="e#20977#20978#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -236,19 +259,19 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/mp3/util/Config.java" />
-        <option value="$PROJECT_DIR$/src/mp3/views/Main.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/IDAO.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAO.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAOSOng.java" />
         <option value="$PROJECT_DIR$/src/mp3/util/DbManager.java" />
         <option value="$PROJECT_DIR$/src/mp3/util/MediaPlayer.java" />
-        <option value="$PROJECT_DIR$/src/mp3/model/Song.java" />
         <option value="$PROJECT_DIR$/src/mp3/model/Playlist.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAOSong.java" />
         <option value="$PROJECT_DIR$/src/mp3/model/Album.java" />
         <option value="$PROJECT_DIR$/src/mp3/dao/DAOAlbum.java" />
         <option value="$PROJECT_DIR$/src/mp3/views/main.fxml" />
+        <option value="$PROJECT_DIR$/src/mp3/model/Song.java" />
+        <option value="$PROJECT_DIR$/src/mp3/views/Main.java" />
         <option value="$PROJECT_DIR$/src/mp3/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/mp3/util/MP3Player.java" />
       </list>
@@ -284,7 +307,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -295,7 +318,151 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MP3Player" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -311,11 +478,18 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.14160156" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/sqlite-jdbc-3.8.11.2.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="FullScreen" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="mp3player" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -618,12 +792,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1456343922441" duration="44906000" />
-      <workItem from="1456513107099" duration="12731000" />
+      <workItem from="1456513107099" duration="23366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58939000" />
+    <option name="totallyTimeSpent" value="69574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -631,7 +805,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -641,13 +815,14 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22054054" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16950959" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18054055" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30486485" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -657,7 +832,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -704,7 +878,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="36" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -766,7 +940,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2575#2576#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -799,8 +976,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5674#5675#0" expanded="true" />
-            <element signature="e#5704#5705#0" expanded="true" />
+            <element signature="e#3060#3061#0" expanded="true" />
+            <element signature="e#3100#3101#0" expanded="true" />
+            <element signature="e#3153#3154#0" expanded="true" />
+            <element signature="e#3189#3190#0" expanded="true" />
+            <element signature="e#6078#6079#0" expanded="true" />
+            <element signature="e#6108#6109#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -831,15 +1012,14 @@
           <caret line="182" column="13" selection-start-line="179" selection-start-column="33" selection-end-line="182" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#showAlbumCreationPopup#0;class#MainController#0" expanded="false" />
-            <element signature="e#18083#18084#0" expanded="true" />
-            <element signature="e#18123#18124#0" expanded="true" />
-            <element signature="e#18179#18180#0" expanded="true" />
-            <element signature="e#18210#18211#0" expanded="true" />
-            <element signature="e#18266#18267#0" expanded="true" />
-            <element signature="e#18316#18317#0" expanded="true" />
-            <element signature="e#18372#18373#0" expanded="true" />
-            <element signature="e#18422#18423#0" expanded="true" />
+            <element signature="e#20638#20639#0" expanded="true" />
+            <element signature="e#20678#20679#0" expanded="true" />
+            <element signature="e#20734#20735#0" expanded="true" />
+            <element signature="e#20765#20766#0" expanded="true" />
+            <element signature="e#20821#20822#0" expanded="true" />
+            <element signature="e#20871#20872#0" expanded="true" />
+            <element signature="e#20927#20928#0" expanded="true" />
+            <element signature="e#20977#20978#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -856,18 +1036,6 @@
         <state vertical-scroll-proportion="0.33206832">
           <caret line="2577" column="0" selection-start-line="2577" selection-start-column="0" selection-end-line="2577" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/views/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1000#1001#0" expanded="true" />
-            <element signature="e#1036#1037#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,53 +1086,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOSong.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1456438206602" expanded="true" signature="698:727" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="1759:1790" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="2866:2884" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="3947:4059" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="5168:5271" placeholder="SELECT * FRO..song..." />
-            <marker date="1456438206602" expanded="true" signature="6340:6419" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7124:7162" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="7680:7715" placeholder="INSERT INTO ..." />
-            <marker date="1456438206602" expanded="true" signature="8228:8315" placeholder="UPDATE song ..." />
-            <marker date="1456438206602" expanded="true" signature="9091:9118" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/views/main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.965517">
-          <caret line="81" column="118" selection-start-line="81" selection-start-column="118" selection-end-line="81" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="28" />
+          <caret line="74" column="118" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -975,26 +1103,6 @@
           <caret line="51" column="115" selection-start-line="51" selection-start-column="115" selection-end-line="51" selection-end-column="115" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="136" column="81" selection-start-line="136" selection-start-column="81" selection-end-line="136" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="1426:1461" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="2288:2310" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3144" placeholder="SELECT * FRO..playlist..." />
-            <marker date="1456438176886" expanded="true" signature="3130:3171" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="4159:4245" placeholder="SELECT * FRO..album..." />
-            <marker date="1456438176886" expanded="true" signature="5320:5357" placeholder="INSERT INTO ..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5890" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="5864:5901" placeholder="UPDATE playl..." />
-            <marker date="1456438176886" expanded="true" signature="6456:6487" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
@@ -1018,33 +1126,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOPlaylist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.931034">
-          <caret line="477" column="34" selection-start-line="477" selection-start-column="34" selection-end-line="477" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#showAlbumCreationPopup#0;class#MainController#0" expanded="false" />
-            <element signature="e#18083#18084#0" expanded="true" />
-            <element signature="e#18123#18124#0" expanded="true" />
-            <element signature="e#18179#18180#0" expanded="true" />
-            <element signature="e#18210#18211#0" expanded="true" />
-            <element signature="e#18266#18267#0" expanded="true" />
-            <element signature="e#18316#18317#0" expanded="true" />
-            <element signature="e#18372#18373#0" expanded="true" />
-            <element signature="e#18422#18423#0" expanded="true" />
+            <marker date="1456438176886" expanded="true" signature="618:651" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456438176886" expanded="true" signature="1426:1461" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456438176886" expanded="true" signature="2288:2310" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456438176886" expanded="true" signature="3130:3144" placeholder="SELECT * FRO..playlist..." />
+            <marker date="1456438176886" expanded="true" signature="3130:3171" placeholder="SELECT * FRO..album..." />
+            <marker date="1456438176886" expanded="true" signature="4159:4245" placeholder="SELECT * FRO..album..." />
+            <marker date="1456438176886" expanded="true" signature="5320:5357" placeholder="INSERT INTO ..." />
+            <marker date="1456438176886" expanded="true" signature="5864:5890" placeholder="UPDATE playl..." />
+            <marker date="1456438176886" expanded="true" signature="5864:5901" placeholder="UPDATE playl..." />
+            <marker date="1456438176886" expanded="true" signature="6456:6487" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/model/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#2525#2526#0" expanded="true" />
+            <element signature="e#2575#2576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/model/Album.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/dao/DAOSong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1456438206602" expanded="true" signature="698:727" placeholder="SELECT * FRO..song..." />
+            <marker date="1456438206602" expanded="true" signature="1759:1790" placeholder="SELECT * FRO..song..." />
+            <marker date="1456438206602" expanded="true" signature="2866:2884" placeholder="SELECT * FRO..song..." />
+            <marker date="1456438206602" expanded="true" signature="3947:4059" placeholder="SELECT * FRO..song..." />
+            <marker date="1456438206602" expanded="true" signature="5168:5271" placeholder="SELECT * FRO..song..." />
+            <marker date="1456438206602" expanded="true" signature="6340:6419" placeholder="INSERT INTO ..." />
+            <marker date="1456438206602" expanded="true" signature="7124:7162" placeholder="INSERT INTO ..." />
+            <marker date="1456438206602" expanded="true" signature="7680:7715" placeholder="INSERT INTO ..." />
+            <marker date="1456438206602" expanded="true" signature="8228:8315" placeholder="UPDATE song ..." />
+            <marker date="1456438206602" expanded="true" signature="9091:9118" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/views/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mp3/util/MP3Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4292169">
-          <caret line="31" column="77" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state vertical-scroll-proportion="-7.62069">
+          <caret line="52" column="53" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5674#5675#0" expanded="true" />
-            <element signature="e#5704#5705#0" expanded="true" />
+            <element signature="e#3060#3061#0" expanded="true" />
+            <element signature="e#3100#3101#0" expanded="true" />
+            <element signature="e#3153#3154#0" expanded="true" />
+            <element signature="e#3189#3190#0" expanded="true" />
+            <element signature="e#6078#6079#0" expanded="true" />
+            <element signature="e#6108#6109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mp3/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7344878">
+          <caret line="363" column="66" selection-start-line="363" selection-start-column="42" selection-end-line="363" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#20638#20639#0" expanded="true" />
+            <element signature="e#20678#20679#0" expanded="true" />
+            <element signature="e#20734#20735#0" expanded="true" />
+            <element signature="e#20765#20766#0" expanded="true" />
+            <element signature="e#20821#20822#0" expanded="true" />
+            <element signature="e#20871#20872#0" expanded="true" />
+            <element signature="e#20927#20928#0" expanded="true" />
+            <element signature="e#20977#20978#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1091,7 +1275,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1108,6 +1292,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

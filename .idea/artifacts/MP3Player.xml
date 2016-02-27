@@ -3,11 +3,16 @@
     <output-path>$PROJECT_DIR$/out/artifacts/MP3Player</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="sample.Main" />
+        <option name="appClass" value="mp3.views.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
       </options>
     </properties>
     <root id="root">
-      <element id="archive" name="JavaFXApp.jar">
+      <element id="archive" name="MP3Player.jar">
         <element id="module-output" name="MP3Player" />
       </element>
     </root>

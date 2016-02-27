@@ -18,6 +18,7 @@ public class Song {
         path = new SimpleStringProperty();
         duration = new SimpleIntegerProperty();
         bitrate = new SimpleIntegerProperty();
+        durationHumanFriendly = new SimpleStringProperty();
     }
 
     public Song(String name, String path, int duration, int bitrate, Quality quality){
@@ -25,6 +26,7 @@ public class Song {
         this.path = new SimpleStringProperty(path);
         this.duration = new SimpleIntegerProperty(duration);
         this.bitrate = new SimpleIntegerProperty(bitrate);
+        setDurationHumanFriendly(duration);
         setQuality(quality);
     }
 
@@ -32,6 +34,7 @@ public class Song {
 
     private int id;
     private StringProperty name;
+    private StringProperty durationHumanFriendly;
     private StringProperty path;
     private IntegerProperty duration;
     private IntegerProperty bitrate;
@@ -99,6 +102,16 @@ public class Song {
 
     public void setQuality(Quality quality) {
         this.quality = quality;
+    }
+
+    private void setDurationHumanFriendly(int seconds){
+        int minutes = seconds / 60;
+        int secodns = seconds % 60;
+        durationHumanFriendly = new SimpleStringProperty(String.format("%d:%d", minutes, secodns));
+    }
+
+    public String getDurationHumanFriendly(){
+        return durationHumanFriendly.get();
     }
 
     @Override

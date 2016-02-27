@@ -1,6 +1,5 @@
 package mp3.views;
 
-import com.sun.glass.events.WindowEvent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,18 +1,23 @@
 package mp3.controllers;
 
-import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -21,7 +26,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.util.Pair;
+import javafx.stage.StageStyle;
 import mp3.dao.DAOAlbum;
 import mp3.dao.DAOPlaylist;
 import mp3.dao.DAOSong;
@@ -31,7 +36,7 @@ import mp3.model.Song;
 import mp3.util.Config;
 import mp3.util.MP3Player;
 
-import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -60,8 +65,6 @@ public class MainController implements Initializable{
     @FXML
     private MenuItem mItem_Close;
 
-    @FXML
-    private TableColumn<Album, String> tCol_Album;
 
     @FXML
     private TableColumn<Album, String> tCol_albums;
@@ -126,11 +129,18 @@ public class MainController implements Initializable{
 
             }
         });
-        table_playlists.setContextMenu(new ContextMenu(menuShowSongsFromPlaylist));
+        MenuItem playPlaylist = new MenuItem("Play");
+        playPlaylist.setOnAction(t -> {
+            MP3Player player = MP3Player.getInstance();
+            player.clearAndAddToQueue(table.getItems());
+            player.play(0);
+            slider.valueProperty().bind(player.getTask().valueProperty());
+        });
+        table_playlists.setContextMenu(new ContextMenu(menuShowSongsFromPlaylist, playPlaylist));
 
         tCol_song.setCellValueFactory(new PropertyValueFactory<Song, String>("name"));
         tCol_Bitrate.setCellValueFactory(new PropertyValueFactory<Song, Integer>("bitrate"));
-        tCol_Duration.setCellValueFactory(new PropertyValueFactory<Song, Integer>("duration"));
+        tCol_Duration.setCellValueFactory(new PropertyValueFactory<Song, Integer>("durationHumanFriendly"));
         ObservableList<Song> songs = FXCollections.observableArrayList();
         songs.addAll(new DAOSong().getAll());
         table.setItems(songs);
@@ -166,7 +176,16 @@ public class MainController implements Initializable{
             table.getItems().clear();
             table.getItems().addAll(new DAOSong().getAll());
         });
-        table.setContextMenu(new ContextMenu(menuToPlayList, menuToAlbum, menuShowAllSongs));
+
+        MenuItem playSong = new MenuItem("Play");
+        playSong.setOnAction(t -> {
+            int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
+            MP3Player player = MP3Player.getInstance();
+            player.clearAndAddToQueue(table.getItems());
+            player.play(selectedSongIndex);
+            slider.valueProperty().bind(player.getTask().valueProperty());
+        });
+        table.setContextMenu(new ContextMenu(menuToPlayList, menuToAlbum, menuShowAllSongs, playSong));
 
         table_playlists.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
@@ -195,20 +214,51 @@ public class MainController implements Initializable{
             catch (Exception ex){
             }
         });
-        table_albums.setContextMenu(new ContextMenu(menuShowSongsFromAlbum));
+
+        MenuItem showCover = new MenuItem("Show Cover");
+        showCover.setOnAction(t -> {
+            Album item = table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex());
+            Dialog<String> dialog = new Dialog<>();
+            ImageView imageView = new ImageView(item.getPicPath());
+            imageView.setFitWidth(200);
+            imageView.setFitHeight(200);
+
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK);
+
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.setPadding(new Insets(20, 150, 10, 10));
+
+            grid.add(imageView, 0, 0, 2, 2);
+
+            dialog.getDialogPane().setContent(grid);
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == ButtonType.OK) {
+                    return "";
+                }
+                return null;
+            });
+
+            dialog.showAndWait();
+        });
+
+        MenuItem playAlbum = new MenuItem("Play");
+        playAlbum.setOnAction(t -> {
+            MP3Player player = MP3Player.getInstance();
+            player.clearAndAddToQueue(table.getItems());
+            player.play(0);
+            slider.valueProperty().bind(player.getTask().valueProperty());
+        });
+
+
+        table_albums.setContextMenu(new ContextMenu(menuShowSongsFromAlbum, playAlbum, showCover));
 
         MP3Player player = MP3Player.getInstance();
         btn_play.textProperty().bind(player.getTask().messageProperty());
-        slider.valueProperty().bind(player.getTask().valueProperty());
         lbl_duration.textProperty().bind(player.getTask().titleProperty());
         player.startTask();
-
-
-        slider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.doubleValue() < oldValue.doubleValue() || newValue.doubleValue() > oldValue.doubleValue() + 3 ){
-                MP3Player.getInstance().rewind(newValue.doubleValue());
-            }
-        });
 
     }
 
@@ -299,7 +349,7 @@ public class MainController implements Initializable{
             final FileChooser fileSelector = new FileChooser();
             final File selectedFile = fileSelector.showOpenDialog(btn_play.getScene().getWindow());
             if (selectedFile != null) {
-                imagePath.setText(selectedFile.getPath());
+                imagePath.setText(selectedFile.toURI().toString());
             }
         });
 
@@ -336,6 +386,7 @@ public class MainController implements Initializable{
 
         result.ifPresent(album -> {
             System.out.println("New album was created");
+            table_albums.getItems().add(album);
         });
     }
 
@@ -420,6 +471,7 @@ public class MainController implements Initializable{
         final File selectedDirectory = directoryChooser.showDialog(btn_play.getScene().getWindow());
         if (selectedDirectory != null) {
             Config.getInstance().setParameter(Config.MUSIC_FOLDER_PATH, selectedDirectory.getAbsolutePath());
+            tryGetMusic();
         }
     }
 
@@ -449,17 +501,29 @@ public class MainController implements Initializable{
             int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
 
             if (selectedSongIndex != -1) {
-                mp3Player.clearAndAddToQueue(table.getItems().subList(selectedSongIndex, table.getItems().size()));
-                mp3Player.addToQueue(table.getItems().subList(0, selectedSongIndex));
+                mp3Player.clearAndAddToQueue(table.getItems());
+                mp3Player.play(selectedSongIndex);
             }
             else{
                 mp3Player.clearAndAddToQueue(table.getItems());
+                mp3Player.play(0);
             }
-            mp3Player.play();
+            slider.valueProperty().bind(mp3Player.getTask().valueProperty());
+
         } else if (mp3Player.getPlayerStatus() == MediaPlayer.Status.PLAYING){
             mp3Player.pause();
+            slider.valueProperty().unbind();
+            slider.valueProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    mp3Player.rewind(newValue.doubleValue());
+                    slider.valueProperty().removeListener(this);
+                    slider.valueProperty().bind(mp3Player.getTask().valueProperty());
+                }
+            });
         } else if (mp3Player.getPlayerStatus() == MediaPlayer.Status.PAUSED){
             mp3Player.proceed();
+            slider.valueProperty().bind(mp3Player.getTask().valueProperty());
         }
     }
 
@@ -483,9 +547,4 @@ public class MainController implements Initializable{
         MP3Player.getInstance().playPrev();
     }
 
-    @FXML
-    void progressBarClicked(Event event) {
-
-
-    }
 }

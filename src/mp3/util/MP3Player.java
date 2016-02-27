@@ -20,46 +20,51 @@ public class MP3Player {
     private final Task task;
     private final Thread thread;
     private final LinkedList<Song> songsQueue;
-    private AtomicInteger indexPlayed;
+    private volatile AtomicInteger indexPlayed;
 
     private MP3Player(){
         songsQueue = new LinkedList<>();
 
         task = new Task(){
             @Override
-            protected Object call() throws Exception{
-                while(true){
-                    if (player != null) {
-                        switch (player.getStatus()) {
+            protected Object call(){
+                try {
+                    while (true) {
+                        if (player != null) {
+                            switch (player.getStatus()) {
 
-                            case PLAYING: {
-                                double duration = player.getMedia().getDuration().toSeconds();
-                                double currentTime = player.getCurrentTime().toSeconds();
-                                updateMessage("pause");
-                                updateValue(100 * currentTime / duration);
-                                int minutes = (int) currentTime / 60;
-                                int seconds = (int) currentTime % 60;
-                                int minutesTotal = (int) duration / 60;
-                                int secondTotal = (int) duration % 60;
-                                updateTitle(String.format("%d:%d/%d:%d", minutes, seconds, minutesTotal, secondTotal));
-                                break;
+                                case PLAYING: {
+                                    double duration = player.getMedia().getDuration().toSeconds();
+                                    double currentTime = player.getCurrentTime().toSeconds();
+                                    updateMessage("pause");
+                                    updateValue(100 * currentTime / duration);
+                                    int minutes = (int) currentTime / 60;
+                                    int seconds = (int) currentTime % 60;
+                                    int minutesTotal = (int) duration / 60;
+                                    int secondTotal = (int) duration % 60;
+                                    updateTitle(String.format("%d:%d/%d:%d", minutes, seconds, minutesTotal, secondTotal));
+                                    break;
+                                }
+                                case STOPPED: {
+                                    updateMessage("play");
+                                    break;
+                                }
+                                case PAUSED: {
+                                    updateMessage("go");
+                                    break;
+                                }
                             }
-                            case STOPPED: {
-                                updateMessage("play");
-                                break;
-                            }
-                            case PAUSED: {
-                                updateMessage("continue");
-                                break;
-                            }
+                        } else {
+                            updateMessage("play");
+                            updateTitle("0:0/0:0");
+                            updateValue(0);
                         }
                     }
-                    else{
-                        updateMessage("play");
-                        updateTitle("0:0/0:0");
-                        updateValue(0);
-                    }
                 }
+                catch (Exception ex){
+
+                }
+                return null;
             }
         };
         thread = new Thread(task);
@@ -81,22 +86,76 @@ public class MP3Player {
 
     public synchronized void addToQueue(Collection<Song> songs){
         songsQueue.addAll(songs);
+    }
 
+    public synchronized void addToQueue(Song song){
+        songsQueue.add(song);
     }
 
     public synchronized void clearAndAddToQueue(Collection<Song> songs){
+        stop();
         songsQueue.clear();
         songsQueue.addAll(songs);
         indexPlayed.set(0);
     }
 
-    public synchronized void play(){
+    public synchronized void clearAndAddToQueue(Song song){
+        stop();
+        songsQueue.clear();
+        songsQueue.add(song);
+        indexPlayed.set(0);
+    }
+
+    public synchronized void play(int index) {
         if (songsQueue.size() == 0)
             return;
 
+        indexPlayed.set(index);
+        play();
+
+    }
+
+    private synchronized void play(){
+        if (songsQueue.size() == 0)
+            return;
         stop();
-        synchronized (songsQueue) {
+        player = new MediaPlayer(new Media(songsQueue.get(indexPlayed.get()).getPath()));
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        player.play();
+        player.setOnEndOfMedia(() -> {
+            synchronized (songsQueue) {
+                if (indexPlayed.incrementAndGet() == songsQueue.size())
+                    indexPlayed.set(0);
+                play();
+            }
+
+        });
+    }
+
+    public synchronized void playNext(){
+        if (player != null) {
+            stop();
+            if (indexPlayed.incrementAndGet() == songsQueue.size())
+                indexPlayed.set(0);
+            play();
+        }
+    }
+
+    public synchronized void playPrev(){
+        if (player != null) {
+            stop();
+            if (indexPlayed.decrementAndGet() < 0)
+                indexPlayed.set(songsQueue.size() - 1);
             player = new MediaPlayer(new Media(songsQueue.get(indexPlayed.get()).getPath()));
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             player.play();
             player.setOnEndOfMedia(() -> {
                 synchronized (songsQueue) {
@@ -106,49 +165,6 @@ public class MP3Player {
                 }
 
             });
-        }
-
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public synchronized void playNext(){
-        if (player != null){
-            stop();
-            synchronized (songsQueue) {
-                if (indexPlayed.incrementAndGet() == songsQueue.size())
-                    indexPlayed.set(0);
-                play();
-            }
-        }
-    }
-
-    public synchronized void playPrev(){
-        if (player != null){
-            stop();
-            synchronized (songsQueue) {
-                if (indexPlayed.decrementAndGet() < 0)
-                    indexPlayed.set(songsQueue.size() - 1);
-                player = new MediaPlayer(new Media(songsQueue.get(indexPlayed.get()).getPath()));
-                player.play();
-                player.setOnEndOfMedia(() -> {
-                    synchronized (songsQueue) {
-                        if (indexPlayed.incrementAndGet() == songsQueue.size())
-                            indexPlayed.set(0);
-                        play();
-                    }
-
-                });
-            }
-
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -170,7 +186,7 @@ public class MP3Player {
 
     public synchronized void rewind(double percent){
         if (player != null){
-            pause();
+            //pause();
             double duration = player.getTotalDuration().toSeconds();
             double rewindToTime = duration * percent / 100;
             player.seek(new Duration(rewindToTime * 1000));
