@@ -19,6 +19,7 @@ public class Config {
 
     /**
      * Singleton implementation
+     * Looks for a config file. If there isn't - it creates a new file.
      * @return singleton instance of an object
      */
     public static Config getInstance(){

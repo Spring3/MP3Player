@@ -33,7 +33,7 @@ public class DbManager {
     }
 
     /**
-     * Returns the new connection to the database
+     * Gets the new connection to the database
      * @return the new connection to the previously initialized database
      */
     public Connection getConnection(){

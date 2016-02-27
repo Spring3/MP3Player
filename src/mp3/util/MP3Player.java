@@ -15,7 +15,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * MP3 player class
+ * MP3 player class. Uses separate thread for UI rendering.
+ * Renders duration (current and maximum) as well as slider progress.
+ * Also, renders the play button text depending on the player status.
  */
 public class MP3Player {
 
@@ -35,7 +37,12 @@ public class MP3Player {
     //a thread safe index of the song that is being played from the songsQueue
     private volatile AtomicInteger indexPlayed;
 
-    //constructor
+    /**
+     * Initializes player queue and a thread for UI updating.
+     * The thread updates current duration, max duration, slider progress, play button text
+     * The thread is of type Daemon.
+     * The thread runs until the application ends.
+     */
     private MP3Player(){
         songsQueue = new LinkedList<>();
         // creating a new task
@@ -117,7 +124,7 @@ public class MP3Player {
     }
 
     /**
-     * Adds a collection of songs into the player queue.
+     * Adds a collection of songs to the player queue.
      * @param songs the collection, containing Song objects.
      */
     public synchronized void addToQueue(Collection<Song> songs){
@@ -169,7 +176,8 @@ public class MP3Player {
     }
 
     /**
-     * Plays the music with a player. Initializes OnMediaEnd event handler.
+     * Plays the music with a player. Initializes OnMediaEnd event handler, which is - to move to the next sound file
+     * when the current one ends.
      */
     private synchronized void play(){
         if (songsQueue.size() == 0)
@@ -198,7 +206,7 @@ public class MP3Player {
     }
 
     /**
-     * Makes the player play the next sound file in the queue
+     * Makes the player play the next sound file from the queue
      */
     public synchronized void playNext(){
         if (player != null) {
@@ -211,7 +219,7 @@ public class MP3Player {
     }
 
     /**
-     * Makes the player play the previous sound file in the queue
+     * Makes the player play the previous sound file from the queue
      */
     public synchronized void playPrev(){
         if (player != null) {
@@ -287,7 +295,7 @@ public class MP3Player {
     }
 
     /**
-     * Starts the task if it wasn't started before.
+     * Starts the task thread if it wasn't started before.
      */
     public void startTask(){
         if (!wasThreadStarted.get()) {
@@ -296,13 +304,16 @@ public class MP3Player {
         }
     }
 
-
     /**
      * Stops the player
      */
     public synchronized void stop(){
         if (player != null)
             player.stop();
+    }
+
+    public synchronized int getCurrentSongIndex(){
+        return indexPlayed.get();
     }
 
     /**

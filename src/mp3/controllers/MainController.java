@@ -128,8 +128,9 @@ public class MainController implements Initializable{
     private List<Song> importedSongs;
 
     /**
-     * This method is implemented in the Initializable interface.
-      * @param location URL to the view
+     * This method was implemented from the Initializable interface.
+     * This method will be called right before the user sees the view.
+     * @param location URL to the view
      * @param resources is usually used for localization purposes, not supported in this app.
      */
     @Override
@@ -191,9 +192,9 @@ public class MainController implements Initializable{
         });
 
         //Option for context menu
-        MenuItem importMusicFoler = new MenuItem("Import music folder");
+        MenuItem importMusicFolder = new MenuItem("Import music folder to this playlist");
         //on click
-        importMusicFoler.setOnAction(t -> {
+        importMusicFolder.setOnAction(t -> {
             try {
                 //get the selected playlist from the tableView
                 //Context meny could have been called without selecting any playlists, hence a NullPointerException will
@@ -209,6 +210,45 @@ public class MainController implements Initializable{
 
                 //and add new data, fetched from the database.
                 //here we get all the songs from the playlist
+
+                //clear all the data, currently present in the tableView
+                table.getItems().clear();
+                label_header.setText(String.format("Songs from '%s'", item));
+                table.getItems().addAll(new DAOPlaylist().getAllSongs(item));
+
+            }
+            catch (Exception ex){}
+        });
+
+        //Option for context menu
+        MenuItem importMusicFiles = new MenuItem("Import music files to this playlist");
+        //on click
+        importMusicFiles.setOnAction(t -> {
+            try {
+                //get the selected playlist from the tableView
+                //Context menu could have been called without selecting any playlists, hence a NullPointerException will
+                //be raised. So, try catch is used.
+                Playlist item = table_playlists.getItems().get(table_playlists.getSelectionModel().getSelectedIndex());
+
+                final FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Choose music files");
+                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Audio Files", "*.mp3", "*.wav"));
+                //get the chosen directory
+                List<File> selectedFiles = fileChooser.showOpenMultipleDialog(btn_play.getScene().getWindow());
+                if (selectedFiles != null){
+                    for(File file : selectedFiles){
+                        if (file.getPath().contains(".mp3") || file.getPath().contains(".wav")) {
+                            //create new media file
+                            Media media = new Media(file.toURI().toString());
+                            //add it to the player
+                            MediaPlayer player = new MediaPlayer(media);
+                            //add to the collection to wait until it becomes ready
+                            players.add(player);
+                        }
+                    }
+                }
+                startParsingThread(item);
+
 
                 //clear all the data, currently present in the tableView
                 table.getItems().clear();
@@ -246,7 +286,7 @@ public class MainController implements Initializable{
             catch (Exception ex){}
         });
         //Adding created options to the context menu
-        table_playlists.setContextMenu(new ContextMenu(importMusicFoler, menuShowSongsFromPlaylist, playPlaylist));
+        table_playlists.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles, menuShowSongsFromPlaylist, playPlaylist));
 
         //event handler for table view selection
         table_playlists.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -384,9 +424,9 @@ public class MainController implements Initializable{
         });
 
         //Option for context menu
-        MenuItem importMusicFoler = new MenuItem("Import music folder");
+        MenuItem importMusicFolder = new MenuItem("Import music folder to this album");
         //on click
-        importMusicFoler.setOnAction(t -> {
+        importMusicFolder.setOnAction(t -> {
             try {
                 //get the selected playlist from the tableView
                 //Context meny could have been called without selecting any playlists, hence a NullPointerException will
@@ -394,6 +434,7 @@ public class MainController implements Initializable{
                 Album item = table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex());
 
                 final DirectoryChooser directoryChooser = new DirectoryChooser();
+                directoryChooser.setTitle("Select a folder with music files");
                 //get the chosen directory
                 final File selectedDirectory = directoryChooser.showDialog(btn_play.getScene().getWindow());
 
@@ -402,6 +443,45 @@ public class MainController implements Initializable{
 
                 //and add new data, fetched from the database.
                 //here we get all the songs from the playlist
+
+                //clear all the data, currently present in the tableView
+                table.getItems().clear();
+                label_header.setText(String.format("Songs from '%s'", item));
+                table.getItems().addAll(new DAOAlbum().getAllSongs(item));
+
+            }
+            catch (Exception ex){}
+        });
+
+        //Option for context menu
+        MenuItem importMusicFiles = new MenuItem("Import music files to this playlist");
+        //on click
+        importMusicFiles.setOnAction(t -> {
+            try {
+                //get the selected playlist from the tableView
+                //Context menu could have been called without selecting any playlists, hence a NullPointerException will
+                //be raised. So, try catch is used.
+                Album item = table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex());
+
+                final FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Choose music files");
+                fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Audio Files", "*.mp3", "*.wav"));
+                //get the chosen directory
+                List<File> selectedFiles = fileChooser.showOpenMultipleDialog(btn_play.getScene().getWindow());
+                if (selectedFiles != null){
+                    for(File file : selectedFiles){
+                        if (file.getPath().contains(".mp3") || file.getPath().contains(".wav")) {
+                            //create new media file
+                            Media media = new Media(file.toURI().toString());
+                            //add it to the player
+                            MediaPlayer player = new MediaPlayer(media);
+                            //add to the collection to wait until it becomes ready
+                            players.add(player);
+                        }
+                    }
+                }
+                startParsingThread(item);
+
 
                 //clear all the data, currently present in the tableView
                 table.getItems().clear();
@@ -472,11 +552,11 @@ public class MainController implements Initializable{
             catch (Exception ex){}
         });
         //add this to the context menu
-        table_albums.setContextMenu(new ContextMenu(importMusicFoler, menuShowSongsFromAlbum, playAlbum, showCover));
+        table_albums.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles, menuShowSongsFromAlbum, playAlbum, showCover));
     }
 
     /**
-     * Shows JavaFX ChoiceDialog to choose the playlist, into which the selected sound file will be included
+     * Shows JavaFX ChoiceDialog to choose to which playlist should the selected sound file be included
      */
     private void showChoiceBoxForPlaylistAdding(){
         //List with choices for choicebox
@@ -505,7 +585,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Shows JavaFX ChoiceDialog to choose the album, into which the selected sound file will be included
+     * Shows JavaFX ChoiceDialog to choose to which album should the selected sound file be included
      */
     private void showChoiceBoxForAlbumAdding(){
         List<Album> choices = new ArrayList<>();
@@ -543,7 +623,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Shows user a dialog box of type Warning.
+     * Shows user a dialog box of type Warning. Describes the error, which occurred.
      * @param title is a title for the dialog box
      * @param header the short caption of the warning
      * @param description a more detailed description of the warning
@@ -559,6 +639,8 @@ public class MainController implements Initializable{
 
     /**
      * Show a dialog box for album creation.
+     * Contains textfields for name and album cover image path
+     * Also, contains a choicebox with the existing playlists
      */
     private void showAlbumCreationPopup(){
         //Creating a custom dialog. The result will be of type Album
@@ -588,6 +670,8 @@ public class MainController implements Initializable{
         fileChooser.setOnAction( event -> {
             //initialize it
             final FileChooser fileSelector = new FileChooser();
+            fileChooser.setText("Choose album cover");
+            fileSelector.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
             //getting the selected file
             final File selectedFile = fileSelector.showOpenDialog(btn_play.getScene().getWindow());
             //if exists
@@ -646,6 +730,9 @@ public class MainController implements Initializable{
 
     /**
      * Function for concurrent music directory parsing
+     * Navigates to the main music folder, adds each file to the queue and starts a daemon slave-thread, which waits until
+     * the files are ready to be processed and then processes the files. The new data is being added to the database
+     * and the duplicated is omitted.
      */
     private void tryGetMusic(){
         //if a config file contains the path to the directory
@@ -696,6 +783,7 @@ public class MainController implements Initializable{
                         try {
                             //wait till the thread dies
                             Thread.currentThread().join();
+                            Thread.currentThread().interrupt();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -729,7 +817,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Decodes the string to the uri path type. (file://file/path.mp3) and returns the file.
+     * Decodes the string to the uri path type. In format (file://file/path.mp3) and returns the file with such path
      * @param source the string to decode
      * @return the file, that has the decoded string address.
      */
@@ -748,9 +836,32 @@ public class MainController implements Initializable{
 
     /**
      * Function for concurrent music directory parsing
+     * Navigates to the main music folder, adds each file to the queue and starts a daemon slave-thread, which waits until
+     * the files are ready to be processed and then processes the files. The new data is being added to the database
+     * and the duplicated is omitted.
+     * The same as tryGetMusic() but checks for the container type (playlist or album), checks if they contain a music.
+     * If it is an album, then it also checks that a playlist contains such music. If no - the music is also added to the
+     * playlist.
      */
     private void getMusicFromFolder(File folder, SongsContainer container){
-        //creating a new thread
+
+        //for each file in the directory
+        for(File f : folder.listFiles()){
+            //if it's extension is of type .mp3 or .wav
+            if (f.getPath().contains(".mp3") || f.getPath().contains(".wav")) {
+                //create new media file
+                Media media = new Media(f.toURI().toString());
+                //add it to the player
+                MediaPlayer player = new MediaPlayer(media);
+                //add to the collection to wait until it becomes ready
+                players.add(player);
+            }
+        }
+
+        startParsingThread(container);
+    }
+
+    private void startParsingThread(SongsContainer container){
         Thread musicParsingThread = new Thread(() -> {
             //getting Data access object for the Song class
             DAOSong dao = new DAOSong();
@@ -792,6 +903,7 @@ public class MainController implements Initializable{
                     try {
                         //wait till the thread dies
                         Thread.currentThread().join();
+                        Thread.currentThread().interrupt();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -800,28 +912,20 @@ public class MainController implements Initializable{
 
         });
 
-        //set thead to be daemon. Hence, if user closes the app, these threads will die not letting them to idle
+        //set thread to be daemon. Hence, if user closes the app, these threads will die not letting them to idle
         //and keeping the app to be shown as running
         musicParsingThread.setDaemon(true);
-
-        //for each file in the directory
-        for(File f : folder.listFiles()){
-            //if it's extension is of type .mp3 or .wav
-            if (f.getPath().contains(".mp3") || f.getPath().contains(".wav")) {
-                //create new media file
-                Media media = new Media(f.toURI().toString());
-                //add it to the player
-                MediaPlayer player = new MediaPlayer(media);
-                //add to the collection to wait until it becomes ready
-                players.add(player);
-            }
-        }
-        //starting the thread, described above
         musicParsingThread.start();
     }
 
+
     /**
-     * Initializes shortcuts
+     * Initializes shortcuts for such operations as:
+     * 1) Creation of a playlist
+     * 2) Creation of an album
+     * 3) Triggering button play/pause/continue
+     * 4) Triggering button playNext for next music playing
+     * 5) Triggering button playPrev for previous music playing
      */
     public void init(){
         btn_addPlaylist.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.N, KeyCombination.CONTROL_DOWN), () -> btn_addPlaylist.fire());
@@ -848,6 +952,34 @@ public class MainController implements Initializable{
             }
 
         });
+
+        table.setRowFactory( tv -> {
+            TableRow<Song> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Song song = row.getItem();
+                    MP3Player player = MP3Player.getInstance();
+                    player.clearAndAddToQueue(table.getItems());
+                    player.play(table.getItems().indexOf(song));
+                }
+            });
+            return row ;
+        });
+
+        Thread selectionThread = new Thread(() -> {
+            MP3Player player = MP3Player.getInstance();
+            while(true){
+                table.getSelectionModel().select(player.getCurrentSongIndex());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        selectionThread.setDaemon(true);
+        selectionThread.start();
     }
 
     /**
@@ -858,6 +990,7 @@ public class MainController implements Initializable{
     void mItemSelectFolderClicked(ActionEvent event) {
         //open a directory chooser
         final DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select your main folder with music");
         //get the chosen directory
         final File selectedDirectory = directoryChooser.showDialog(btn_play.getScene().getWindow());
         if (selectedDirectory != null) {
@@ -869,7 +1002,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Event handler for "New Playlist" menuItem click
+     * Shows a dialog to create a new playlist
      * @param actionEvent
      */
     @FXML
@@ -899,7 +1032,12 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Play button click event handler
+     * Checks the status of the current player.
+     * If the user hadn't selected the music file from the table, the player starts to play the very first file from the
+     * queue. Otherwise, the index of the selected music file in the tableView is selected as the first one.
+     * If UNKNOWN - initializes a player, sets up the sound files queue and runs the sound file.
+     * If PLAYING - pauses the player and unbinds the slider, allowing user to rewind the music
+     * If PAUSED - continues to play the music from the moment it stopped.
      * @param event actionEvent
      */
     @FXML
@@ -954,7 +1092,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Create album menuItem click event handler
+     * Shows popup for album creation
      * @param actionEvent actionEvent
      */
     @FXML
@@ -964,7 +1102,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * "Exit" menuItem click event handler
+     * Shuts the application down
      * @param actionEvent actionEvent
      */
     @FXML
@@ -973,7 +1111,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Button >> click event handler
+     * Commands the player to play the next song
      * @param actionEvent actionEvent
      */
     @FXML
@@ -983,7 +1121,7 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Button << click event handler
+     * Commands the player to play the previous song
      * @param actionEvent actionEvent
      */
 
@@ -993,6 +1131,10 @@ public class MainController implements Initializable{
         MP3Player.getInstance().playPrev();
     }
 
+    /**
+     * Shows all songs. Adds them into the tableView.
+     * @param actionEvent actionEvent
+     */
     @FXML
     void mItem_showAllSongs(ActionEvent actionEvent){
         label_header.setText(String.format("All songs"));

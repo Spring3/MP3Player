@@ -200,8 +200,14 @@ public class DAOPlaylist implements IDAO<Playlist> {
         }
     }
 
-    public boolean containsSong(Playlist playlis, Song song){
-        return getAllSongs(playlis).contains(song);
+    /**
+     * Checks the database table for existence of the given song object in the album
+     * @param playlist the playlist to search in
+     * @param song the sound file to look for
+     * @return true if such sound file was already added to the playlist . Otherwise - false
+     */
+    public boolean containsSong(Playlist playlist, Song song){
+        return getAllSongs(playlist).contains(song);
     }
 
     @Override
