@@ -4,11 +4,15 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import mp3.dao.DAOPlaylist;
+import mp3.dao.DAOSong;
+
+import java.util.List;
 
 /**
  * Class, containing the main info about the playlist
  */
-public class Playlist {
+public class Playlist implements SongsContainer{
 
     /**
      * Creates a default playlist instance
@@ -94,4 +98,15 @@ public class Playlist {
         return getName();
     }
 
+    @Override
+    public synchronized List<Song> getSongs() {
+        DAOPlaylist dao = new DAOPlaylist();
+        return dao.getAllSongs(dao.get(getName()));
+    }
+
+    @Override
+    public synchronized boolean assignSong(Song song) {
+        DAOPlaylist dao = new DAOPlaylist();
+        return new DAOSong().addToPlaylist(dao.get(getName()), song);
+    }
 }

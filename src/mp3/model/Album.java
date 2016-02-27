@@ -4,12 +4,16 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import mp3.dao.DAOAlbum;
 import mp3.dao.DAOPlaylist;
+import mp3.dao.DAOSong;
+
+import java.util.List;
 
 /**
  * The class, containing the main info about the album instance
  */
-public class Album {
+public class Album implements SongsContainer {
 
     /**
      * Creates the default album instance
@@ -152,4 +156,15 @@ public class Album {
         return getName();
     }
 
+    @Override
+    public synchronized List<Song> getSongs() {
+        DAOAlbum dao = new DAOAlbum();
+        return dao.getAllSongs(dao.get(getName(), getPlayList()));
+    }
+
+    @Override
+    public synchronized boolean assignSong(Song song) {
+        DAOAlbum dao = new DAOAlbum();
+        return new DAOSong().addToAlbum(dao.get(getName(), getPlayList()), song);
+    }
 }

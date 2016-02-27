@@ -45,6 +45,15 @@
                         </MenuItem>
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Songs">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#mItem_showAllSongs" text="Show all songs">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </top>
