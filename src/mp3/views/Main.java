@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import mp3.controllers.MainController;
 import mp3.util.DbManager;
 
+import java.net.URL;
+
 /**
  * Entry point. Extends application - basic requirement according to the JavaFX app structure
  */
@@ -32,6 +34,7 @@ public class Main extends Application{
             MainController controller = loader.getController();
             //set scene
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(Main.class.getClassLoader().getResource("style.css").toExternalForm());
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("MP3 Player");

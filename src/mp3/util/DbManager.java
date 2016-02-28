@@ -67,7 +67,7 @@ public class DbManager {
         queries.add("CREATE TABLE IF NOT EXISTS song (id integer primary key autoincrement, name varchar(60) unique, path text, duration integer, bitrate integer, quality varchar(10));");
         queries.add("CREATE TABLE IF NOT EXISTS playlist (id integer primary key autoincrement, name varchar(60) unique);");
         queries.add("CREATE TABLE IF NOT EXISTS song_playlist (song_id integer, playlist_id integer, foreign key(song_id) references song(id), foreign key(playlist_id) references playlist(id));");
-        queries.add("CREATE TABLE IF NOT EXISTS album (id integer primary key autoincrement, name varchar(50), imgPath text, playlist_id integer, foreign key(playlist_id) references playlist(id));");
+        queries.add("CREATE TABLE IF NOT EXISTS album (id integer primary key autoincrement, name varchar(50) unique, imgPath text);");
         queries.add("CREATE TABLE IF NOT EXISTS song_album (song_id integer, album_id integer, foreign key(song_id) references song(id), foreign key(album_id) references album(id));");
 
         Connection connection = getConnection();

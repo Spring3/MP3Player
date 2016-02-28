@@ -1,0 +1,24 @@
+.centered{
+  -fx-alignment: center;
+}
+
+.hightlight:focused .table-row-cell:hover{
+  -fx-background-color: #B2EBF2;
+}
+
+.hightlight:focused .table-row-cell:filled:focused:selected {{
+  -fx-background: -fx-accent;
+  -fx-background-color: yellow;
+  -fx-background-insets: 0, 1, 2;
+  -fx-text-fill: -fx-selection-bar-text;
+  -fx-background-color: #0090c0;
+}
+
+.hightlight .table-row-cell{
+  -fx-cell-size: 30px;
+}
+
+
+.round{
+  -fx-background-radius: 50px;
+}

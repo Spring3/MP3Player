@@ -13,15 +13,15 @@
          <left>
             <VBox prefHeight="725.0" prefWidth="224.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="table_playlists" prefHeight="312.0" prefWidth="224.0">
+                  <TableView fx:id="table_playlists" prefHeight="312.0" prefWidth="224.0" styleClass="hightlight">
                     <columns>
-                      <TableColumn fx:id="tCol_playlists" editable="false" prefWidth="223.0" style="text-align: center;" text="Playlists" />
+                      <TableColumn fx:id="tCol_playlists" editable="false" prefWidth="223.0" styleClass="centered" text="Playlists" />
                     </columns>
                   </TableView>
                   <Button fx:id="btn_addPlaylist" mnemonicParsing="false" onAction="#createPlayList" prefHeight="41.0" prefWidth="224.0" text="Add playlist" />
-                  <TableView fx:id="table_albums" prefHeight="339.0" prefWidth="224.0">
+                  <TableView fx:id="table_albums" prefHeight="339.0" prefWidth="224.0" styleClass="hightlight">
                      <columns>
-                        <TableColumn fx:id="tCol_albums" editable="false" prefWidth="223.0" text="Albums" />
+                        <TableColumn fx:id="tCol_albums" editable="false" prefWidth="223.0" styleClass="centered" text="Albums" />
                      </columns>
                   </TableView>
                   <Button fx:id="btn_addAlbums" mnemonicParsing="false" onAction="#createAlbum" prefHeight="41.0" prefWidth="224.0" text="Add album" />
@@ -40,16 +40,30 @@
                         </MenuItem>
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Songs">
+                  <Menu mnemonicParsing="false" text="Unsorted Import">
                     <items>
-                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Select main music folder">
+                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Add unsorted folder">
                            <accelerator>
-                              <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                              <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
-                      <MenuItem mnemonicParsing="false" onAction="#mItem_showAllSongs" text="Show all songs">
+                      <MenuItem mnemonicParsing="false" onAction="#mItem_showAllSongs" text="Show unsorted songs">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Sorted import">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#createPlayList" text="Add Playlist">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem mnemonicParsing="false" onAction="#createAlbum" text="Add Album">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
                     </items>
@@ -60,11 +74,12 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="table" layoutY="42.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="671.0" prefWidth="1056.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+                  <TableView fx:id="table" layoutY="42.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="671.0" prefWidth="1056.0" styleClass="hightlight" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
                      <columns>
-                        <TableColumn fx:id="tCol_song" editable="false" maxWidth="300.0" minWidth="240.0" prefWidth="240.0" text="Song" />
-                        <TableColumn fx:id="tCol_Duration" editable="false" maxWidth="168.0" minWidth="100.0" prefWidth="100.0" text="Duration" />
-                        <TableColumn fx:id="tCol_Bitrate" editable="false" maxWidth="110.0" minWidth="100.0" prefWidth="100.0" text="Bitrate" />
+                        <TableColumn fx:id="tCol_song" editable="false" maxWidth="454.0" minWidth="240.0" prefWidth="347.0" style="-fx-alignment: center;" styleClass="centered" text="Song" />
+                        <TableColumn fx:id="tCol_Duration" editable="false" maxWidth="185.0" minWidth="0.0" prefWidth="76.0" styleClass="centered" text="Duration" />
+                        <TableColumn fx:id="tCol_Bitrate" editable="false" maxWidth="158.0" minWidth="45.0" prefWidth="60.0" styleClass="centered" text="Bitrate" />
+                        <TableColumn fx:id="tCol_albumCover" prefWidth="112.0" styleClass="centered" text="Cover" visible="false" />
                      </columns>
                   </TableView>
                   <Label fx:id="label_header" alignment="CENTER" layoutX="444.0" layoutY="4.0" text="All songs" textAlignment="CENTER" AnchorPane.bottomAnchor="674.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0">
@@ -78,11 +93,12 @@
          <bottom>
             <AnchorPane fx:id="bottomAnchorPane" prefHeight="62.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
                <children>
-                  <Slider fx:id="slider" blockIncrement="0.0" majorTickUnit="1.0" minorTickCount="0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
+                  <Slider fx:id="slider" blockIncrement="0.0" majorTickUnit="1.0" minorTickCount="1" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
                   <Label fx:id="lbl_duration" alignment="CENTER" layoutX="176.0" layoutY="23.0" prefHeight="17.0" prefWidth="67.0" text="0:00/0:00" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="176.0" AnchorPane.topAnchor="23.0" />
-                  <Button fx:id="btn_next" layoutX="129.0" layoutY="19.0" mnemonicParsing="false" onAction="#playNext" text="&gt;&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="129.0" AnchorPane.topAnchor="19.0" />
-                  <Button fx:id="btn_play" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="19.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#playSong" prefHeight="25.0" prefWidth="60.0" text="Play" textAlignment="CENTER" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="19.0" />
-                  <Button fx:id="btn_prev" layoutX="3.0" layoutY="19.0" mnemonicParsing="false" onAction="#playPrev" text="&lt;&lt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="19.0" />
+                  <Button fx:id="btn_next" layoutX="125.0" layoutY="19.0" mnemonicParsing="false" onAction="#playNext" styleClass="round" text="&gt;&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="19.0" />
+                  <Button fx:id="btn_play" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="19.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#playSong" prefHeight="25.0" prefWidth="60.0" styleClass="round" text="Play" textAlignment="CENTER" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="19.0" />
+                  <Button fx:id="btn_prev" layoutX="3.0" layoutY="19.0" mnemonicParsing="false" onAction="#playPrev" styleClass="round" text="&lt;&lt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="19.0" />
+                  <Slider fx:id="phantomSlider" blockIncrement="0.0" majorTickUnit="1.0" minorTickCount="1" visible="false" />
                </children>
             </AnchorPane>
          </bottom>

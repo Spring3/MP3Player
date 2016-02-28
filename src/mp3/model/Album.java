@@ -1,11 +1,7 @@
 package mp3.model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import mp3.dao.DAOAlbum;
-import mp3.dao.DAOPlaylist;
 import mp3.dao.DAOSong;
 
 import java.util.List;
@@ -20,9 +16,8 @@ public class Album implements SongsContainer {
      */
     public Album(){
         id = new SimpleIntegerProperty();
-        name = new SimpleStringProperty();
-        picPath = new SimpleStringProperty();
-        playlistId = new SimpleIntegerProperty();
+        name = new SimpleStringProperty("");
+        picPath = new SimpleStringProperty("");
     }
 
     /**
@@ -34,7 +29,6 @@ public class Album implements SongsContainer {
     public Album(String name, String picPath, Playlist playlist){
         this.name = new SimpleStringProperty(name);
         this.picPath = new SimpleStringProperty(picPath);
-        this.playlistId = new SimpleIntegerProperty(playlist.getId());
         id = new SimpleIntegerProperty();
     }
 
@@ -42,19 +36,16 @@ public class Album implements SongsContainer {
      * Creates the album instance with the given parameters
      * @param name the name of the album
      * @param picPath the uri path to the album cover
-     * @param playlistId the id of the parent playlist of this album
      */
-    public Album(String name, String picPath, int playlistId){
+    public Album(String name, String picPath){
         this.name = new SimpleStringProperty(name);
         this.picPath = new SimpleStringProperty(picPath);
-        this.playlistId = new SimpleIntegerProperty(playlistId);
         id = new SimpleIntegerProperty();
     }
 
     private IntegerProperty id;
     private StringProperty name;
     private StringProperty picPath;
-    private IntegerProperty playlistId;
 
     /**
      * Gets the id of the playlist
@@ -112,22 +103,6 @@ public class Album implements SongsContainer {
         picPath.set(path);
     }
 
-    /**
-     * Gets the parent playlist
-     * @return the parent playlist
-     */
-    public Playlist getPlayList(){
-        return new DAOPlaylist().get(playlistId.get());
-    }
-
-    /**
-     * Sets the id of the parent playlist
-     * @param id the id of the parent playlist in the database
-     */
-    public void setPlaylistId(int id){
-        this.playlistId.set(id);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -136,7 +111,6 @@ public class Album implements SongsContainer {
         Album album = (Album) o;
 
         if (getId() != album.getId()) return false;
-        if (playlistId != album.playlistId) return false;
         if (getName() != null ? !getName().equals(album.getName()) : album.getName() != null) return false;
         return !(getPicPath() != null ? !getPicPath().equals(album.getPicPath()) : album.getPicPath() != null);
 
@@ -147,7 +121,6 @@ public class Album implements SongsContainer {
         int result = getId();
         result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getPicPath() != null ? getPicPath().hashCode() : 0);
-        result = 31 * result + playlistId.get();
         return result;
     }
 
@@ -159,17 +132,13 @@ public class Album implements SongsContainer {
     @Override
     public synchronized List<Song> getSongs() {
         DAOAlbum dao = new DAOAlbum();
-        return dao.getAllSongs(dao.get(getName(), getPlayList()));
+        return dao.getAllSongs(dao.get(getName()));
     }
 
     @Override
     public synchronized boolean assignSong(Song song) {
-        Playlist playlist = getPlayList();
-        if (!playlist.containsSong(playlist, song)){
-            playlist.assignSong(song);
-        }
         DAOAlbum dao = new DAOAlbum();
-        return new DAOSong().addToAlbum(dao.get(getName(), getPlayList()), song);
+        return new DAOSong().addToAlbum(dao.get(getName()), song);
     }
 
     @Override

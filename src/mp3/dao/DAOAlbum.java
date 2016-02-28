@@ -1,9 +1,7 @@
 package mp3.dao;
 
 import mp3.model.Album;
-import mp3.model.Playlist;
 import mp3.model.Song;
-import mp3.model.SongsContainer;
 import mp3.util.DbManager;
 
 import java.sql.Connection;
@@ -37,8 +35,7 @@ public class DAOAlbum implements IDAO<Album> {
                 int albumId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String picPath = resultSet.getString(3);
-                int playListId = resultSet.getInt(4);
-                result = new Album(name, picPath, playListId);
+                result = new Album(name, picPath);
                 result.setId(albumId);
             }
 
@@ -55,23 +52,20 @@ public class DAOAlbum implements IDAO<Album> {
     /**
      * Gets the album from the database by the given name
      * @param name the name of the album to fetch
-     * @param parent the parent palylist of the album
      * @return the album object if it was found. Otherwise, returns null
      */
-    public Album get(String name, Playlist parent) {
+    public Album get(String name) {
         Album result = null;
         try{
             Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE name=? AND playlist_id=?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE name=?");
             statement.setString(1, name);
-            statement.setInt(2, parent.getId());
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 int albumId = resultSet.getInt(1);
                 String albumname = resultSet.getString(2);
                 String picPath = resultSet.getString(3);
-                int playListId = resultSet.getInt(4);
-                result = new Album(albumname, picPath, playListId);
+                result = new Album(albumname, picPath);
                 result.setId(albumId);
             }
 
@@ -96,8 +90,7 @@ public class DAOAlbum implements IDAO<Album> {
                 int albumId = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String picPath = resultSet.getString(3);
-                int playlistId = resultSet.getInt(4);
-                Album album = new Album(name, picPath, playlistId);
+                Album album = new Album(name, picPath);
                 album.setId(albumId);
                 result.add(album);
             }
@@ -132,7 +125,7 @@ public class DAOAlbum implements IDAO<Album> {
         List<Song> result = new ArrayList<>();
         try{
             Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_album ON song_id = song.id WHERE album_id=?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM song INNER JOIN song_album ON song_id = song.id WHERE album_id = ?");
             statement.setInt(1, album.getId());
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
@@ -161,10 +154,9 @@ public class DAOAlbum implements IDAO<Album> {
     public boolean create(Album value) {
         try{
             Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO album (name, imgPath, playlist_id) VALUES(?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO album (name, imgPath) VALUES(?, ?)");
             statement.setString(1, value.getName());
             statement.setString(2, value.getPicPath());
-            statement.setInt(3, value.getPlayList().getId());
             statement.executeUpdate();
             statement.close();
             connection.close();
@@ -180,11 +172,10 @@ public class DAOAlbum implements IDAO<Album> {
     public boolean update(Album value) {
         try{
             Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE album SET name=?, imgPath=?, playlist_id=? WHERE id=?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE album SET name=?, imgPath=? WHERE id=?");
             statement.setString(1, value.getName());
             statement.setString(2, value.getPicPath());
-            statement.setInt(3, value.getPlayList().getId());
-            statement.setInt(4, value.getId());
+            statement.setInt(3, value.getId());
             statement.executeUpdate();
             statement.close();
             connection.close();

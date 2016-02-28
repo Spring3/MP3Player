@@ -100,38 +100,6 @@ public class DAOPlaylist implements IDAO<Playlist> {
     }
 
     /**
-     * Gets the list of albums in the playlist
-     * @param value the parent playlist
-     * @return the list of albums if they exist. Otherwise, returns an empty list
-     */
-    public List<Album> getAllAlbums(Playlist value) {
-        List<Album> result = new ArrayList<>();
-        try{
-            Connection connection = manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM album WHERE playlist_id = ?");
-            statement.setInt(1, value.getId());
-            ResultSet resultSet = statement.executeQuery();
-            while(resultSet.next()){
-                int albumId = resultSet.getInt(1);
-                String albumname = resultSet.getString(2);
-                String picPath = resultSet.getString(3);
-                int playListId = resultSet.getInt(4);
-                Album album = new Album(albumname, picPath, playListId);
-                album.setId(albumId);
-                result.add(album);
-            }
-
-            resultSet.close();
-            statement.close();
-            connection.close();
-        }
-        catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return result;
-    }
-
-    /**
      * Gets all songs from the playlist
      * @param playlist the parent playlist
      * @return the list of the songs in the playlist, if there is any. Otherwise, returns empty list
