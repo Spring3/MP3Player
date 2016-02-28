@@ -33,11 +33,6 @@
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
-                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Select main music folder">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
                     <MenuItem fx:id="mItem_Close" mnemonicParsing="false" onAction="#shutdown" text="Close">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -47,6 +42,11 @@
                 </Menu>
                   <Menu mnemonicParsing="false" text="Songs">
                     <items>
+                        <MenuItem fx:id="mItem_selFolder" mnemonicParsing="false" onAction="#mItemSelectFolderClicked" text="Select main music folder">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
                       <MenuItem mnemonicParsing="false" onAction="#mItem_showAllSongs" text="Show all songs">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -80,7 +80,7 @@
                <children>
                   <Slider fx:id="slider" blockIncrement="0.0" majorTickUnit="1.0" minorTickCount="0" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="21.0" />
                   <Label fx:id="lbl_duration" alignment="CENTER" layoutX="176.0" layoutY="23.0" prefHeight="17.0" prefWidth="67.0" text="0:00/0:00" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="176.0" AnchorPane.topAnchor="23.0" />
-                  <Button fx:id="btn_next" layoutX="133.0" layoutY="19.0" mnemonicParsing="false" onAction="#playNext" text="&gt;&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="19.0" />
+                  <Button fx:id="btn_next" layoutX="129.0" layoutY="19.0" mnemonicParsing="false" onAction="#playNext" text="&gt;&gt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="129.0" AnchorPane.topAnchor="19.0" />
                   <Button fx:id="btn_play" alignment="CENTER" contentDisplay="CENTER" layoutX="41.0" layoutY="19.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#playSong" prefHeight="25.0" prefWidth="60.0" text="Play" textAlignment="CENTER" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="19.0" />
                   <Button fx:id="btn_prev" layoutX="3.0" layoutY="19.0" mnemonicParsing="false" onAction="#playPrev" text="&lt;&lt;" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="19.0" />
                </children>

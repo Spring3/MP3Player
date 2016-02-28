@@ -17,11 +17,12 @@ public class Song {
      * Creates the default song instance
      */
     public Song(){
-        name = new SimpleStringProperty();
-        path = new SimpleStringProperty();
+        name = new SimpleStringProperty("");
+        path = new SimpleStringProperty("");
         duration = new SimpleIntegerProperty();
         bitrate = new SimpleIntegerProperty();
-        durationHumanFriendly = new SimpleStringProperty();
+        durationHumanFriendly = new SimpleStringProperty("");
+        bitrateString = new SimpleStringProperty("");
     }
 
     /**
@@ -38,12 +39,14 @@ public class Song {
         this.duration = new SimpleIntegerProperty(duration);
         this.bitrate = new SimpleIntegerProperty(bitrate);
         setDurationHumanFriendly(duration);
+        bitrateString = new SimpleStringProperty(bitrate + "");
         setQuality(quality);
     }
 
     private int id;
     private StringProperty name;
     private StringProperty durationHumanFriendly;
+    private StringProperty bitrateString;
     private StringProperty path;
     private IntegerProperty duration;
     private IntegerProperty bitrate;
@@ -151,6 +154,7 @@ public class Song {
      */
     public void setBitrate(int bitrate) {
         this.bitrate.set(bitrate);
+        this.bitrateString.set(bitrate + "");
     }
 
     /**
@@ -159,6 +163,22 @@ public class Song {
      */
     public IntegerProperty getBitrateProperty(){
         return bitrate;
+    }
+
+    /**
+     * Gets the song's bitrate as string
+     * @return the song's bitrate as string
+     */
+    public String getBitrateString(){
+        return bitrateString.get();
+    }
+
+    /**
+     * Gets the song's bitrate string property
+     * @return the property, which contains the song's bitrate
+     */
+    public StringProperty getBitrateStringProperty(){
+        return bitrateString;
     }
 
     /**

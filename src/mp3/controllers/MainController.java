@@ -64,7 +64,7 @@ public class MainController implements Initializable{
     //Here go the main elements from the view.
     //@FXML is a dependency injection. It will make sure these variables are initialized when the app runs.
     @FXML
-    private TableColumn<Song, Integer> tCol_Duration;
+    private TableColumn<Song, String> tCol_Duration;
 
     @FXML
     private TableView<Playlist> table_playlists;
@@ -94,7 +94,7 @@ public class MainController implements Initializable{
     private TableColumn<Playlist, String> tCol_playlists;
 
     @FXML
-    private TableColumn<Song, Integer> tCol_Bitrate;
+    private TableColumn<Song, String> tCol_Bitrate;
 
     @FXML
     private TableView<Album> table_albums;
@@ -123,9 +123,6 @@ public class MainController implements Initializable{
     //A concurrent collection. Contains MusicPlayer objects.
     //Is used for fetching music metadata and other required data.
     private BlockingQueue<MediaPlayer> players = new LinkedBlockingQueue<>();
-
-    //A collection where the imported songs are kept
-    private List<Song> importedSongs;
 
     /**
      * This method was implemented from the Initializable interface.
@@ -167,29 +164,6 @@ public class MainController implements Initializable{
         ObservableList<Playlist> playlists = FXCollections.observableArrayList(); //this list tracks all the changes to its data.
         playlists.addAll(new DAOPlaylist().getAll()); //fetching all the playlists from the database
         table_playlists.setItems(playlists); //and adding them to the tableView
-
-        //Context menu menuItem.
-        MenuItem menuShowSongsFromPlaylist = new MenuItem("Show songs");
-        //on click
-        menuShowSongsFromPlaylist.setOnAction(t -> {
-            try {
-                //get the selected playlist from the tableView
-                //Context meny could have been called without selecting any playlists, hence a NullPointerException will
-                //be raised. So, try catch is used.
-                Playlist item = table_playlists.getItems().get(table_playlists.getSelectionModel().getSelectedIndex());
-
-                //and add new data, fetched from the database.
-                //here we get all the songs from the playlist
-                List<Song> songs = new DAOPlaylist().getAllSongs(item);
-                if( songs.size() > 0){
-                    //clear all the data, currently present in the tableView
-                    table.getItems().clear();
-                    label_header.setText(String.format("Songs from '%s'", item));
-                    table.getItems().addAll(songs);
-                }
-            }
-            catch (Exception ex){}
-        });
 
         //Option for context menu
         MenuItem importMusicFolder = new MenuItem("Import music folder to this playlist");
@@ -259,34 +233,9 @@ public class MainController implements Initializable{
             catch (Exception ex){}
         });
 
-        //Another option for the context menu. Plays the selected playlist
-        MenuItem playPlaylist = new MenuItem("Play");
-        //on click
-        playPlaylist.setOnAction(t -> {
-            try {
-                //get the selected playlist from the tableView
-                //Context meny could have been called without selecting any playlists, hence a NullPointerException will
-                //be raised. So, try catch is used.
-                Playlist item = table_playlists.getItems().get(table_playlists.getSelectionModel().getSelectedIndex());
-                //Get the instance of the mp3 player (implemented, using thread-safe Singleton pattern)
-                MP3Player player = MP3Player.getInstance();
-                List<Song> songs = new DAOPlaylist().getAllSongs(item);
-                if (songs.size() > 0) {
-                    label_header.setText(String.format("Songs from '%s'", item));
-                    table.getItems().addAll(songs);
-                    //clears the list of music already added to the queue and adds new portion of music instead
-                    player.clearAndAddToQueue(table.getItems());
-                    //and plays from the beginning.
-                    player.play(0);
-                    //after we click "play", we want the slider to show the progress of music being played.
-                    //that is why we bind it to the property updates, made by another thread in the MP3Player class
-                    slider.valueProperty().bind(player.getTask().valueProperty());
-                }
-            }
-            catch (Exception ex){}
-        });
+
         //Adding created options to the context menu
-        table_playlists.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles, menuShowSongsFromPlaylist, playPlaylist));
+        table_playlists.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles));
 
         //event handler for table view selection
         table_playlists.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -295,16 +244,16 @@ public class MainController implements Initializable{
                 table_albums.getSelectionModel().clearSelection();
                 //fetch songs from the playlist from database
                 List<Song> songs = new DAOPlaylist().getAllSongs(newSelection);
-                //if (songs.size() > 0) {
-                    //clear the tableview
-                    table.getItems().clear();
-                    label_header.setText(String.format("Songs from '%s'", newSelection));
-                    table.getItems().addAll(songs);
-                    //clear the tableView with albums
-                    table_albums.getItems().clear();
-                    //get all the albums from the selected playlist
-                    table_albums.getItems().addAll(new DAOPlaylist().getAllAlbums(newSelection));
-                //}
+                //clear the tableview
+                table.getItems().clear();
+                label_header.setText(String.format("Songs from '%s'", newSelection));
+                table.getItems().addAll(songs);
+                if (songs.size() == 0)
+                    table.getItems().add(new Song());
+                //clear the tableView with albums
+                table_albums.getItems().clear();
+                //get all the albums from the selected playlist
+                table_albums.getItems().addAll(new DAOPlaylist().getAllAlbums(newSelection));
             }
 
         });
@@ -319,8 +268,8 @@ public class MainController implements Initializable{
         //binding properties from the Song class to the tableView columns
         //it will be then automatically updated/refreshed when modified from anywhere
         tCol_song.setCellValueFactory(new PropertyValueFactory<Song, String>("name"));
-        tCol_Bitrate.setCellValueFactory(new PropertyValueFactory<Song, Integer>("bitrate"));
-        tCol_Duration.setCellValueFactory(new PropertyValueFactory<Song, Integer>("durationHumanFriendly"));
+        tCol_Bitrate.setCellValueFactory(new PropertyValueFactory<Song, String>("bitrateString"));
+        tCol_Duration.setCellValueFactory(new PropertyValueFactory<Song, String>("durationHumanFriendly"));
         //Creating ObservalbeList to keep track of our songs
         ObservableList<Song> songs = FXCollections.observableArrayList();
         //Adding all the songs, already saved into the local db
@@ -359,25 +308,8 @@ public class MainController implements Initializable{
             catch (Exception ex){}
         });
 
-        //Option for the context menu. Plays the selected music.
-        MenuItem playSong = new MenuItem("Play");
-        //When selected
-        playSong.setOnAction(t -> {
-            //get the index of the selected song
-            int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
-            //getting the mp3 player instance
-            MP3Player player = MP3Player.getInstance();
-            //clear the existing music queue and add songs from the tableView
-            player.clearAndAddToQueue(table.getItems());
-            //the index of songs in the table and in the queue are equal. Hence, we just call play n-th song.
-            //that's it. Really ;)
-            player.play(selectedSongIndex);
-            //binding the slider to show the progress of music being played
-            slider.valueProperty().bind(player.getTask().valueProperty());
-        });
-
         //adding these options to the context menu
-        table.setContextMenu(new ContextMenu(menuToPlayList, menuToAlbum, playSong));
+        table.setContextMenu(new ContextMenu(menuToPlayList, menuToAlbum));
     }
 
     /**
@@ -392,35 +324,17 @@ public class MainController implements Initializable{
             //if exists
             if (newValue != null){
                 List<Song> songs = new DAOAlbum().getAllSongs(newValue);
-                if (songs.size() > 0) {
-                    label_header.setText(String.format("Songs from '%s'", newValue));
-                    //clear all the songs from the table
-                    table.getItems().clear();
-                    //add songs from the album instead
-                    table.getItems().addAll(songs);
+                label_header.setText(String.format("Songs from '%s'", newValue));
+                //clear all the songs from the table
+                table.getItems().clear();
+                //add songs from the album instead
+                table.getItems().addAll(songs);
+                if (songs.size() == 0){
+                    table.getItems().add(new Song());
                 }
                 table_playlists.getSelectionModel().clearSelection();
             }
 
-        });
-
-        //Option for the context menu. Shows songs from the album.
-        MenuItem menuShowSongsFromAlbum = new MenuItem("Show songs");
-        //When the option is selected
-        menuShowSongsFromAlbum.setOnAction(t -> {
-            try {
-                //get the selected album
-                Album item = table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex());
-                List<Song> songs = new DAOAlbum().getAllSongs(item);
-                if (songs.size() > 0) {
-                    label_header.setText(String.format("Songs from '%s'", item));
-                    //clear songs tableView
-                    table.getItems().clear();
-                    //add songs from the album instead
-                    table.getItems().addAll(songs);
-                }
-            }
-            catch (Exception ex){}
         });
 
         //Option for context menu
@@ -454,7 +368,7 @@ public class MainController implements Initializable{
         });
 
         //Option for context menu
-        MenuItem importMusicFiles = new MenuItem("Import music files to this playlist");
+        MenuItem importMusicFiles = new MenuItem("Import music files to this album");
         //on click
         importMusicFiles.setOnAction(t -> {
             try {
@@ -530,29 +444,8 @@ public class MainController implements Initializable{
             dialog.showAndWait();
         });
 
-        //Option for the context menu. Plays the selected album
-        MenuItem playAlbum = new MenuItem("Play");
-        //when selected
-        playAlbum.setOnAction(t -> {
-            try {
-                //get mp3 player instance
-                MP3Player player = MP3Player.getInstance();
-                Album item = table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex());
-                List<Song> songs = new DAOAlbum().getAllSongs(item);
-                if (songs.size() > 0) {
-                    //clear the queue. add the songs from the album instead.
-                    player.clearAndAddToQueue(table.getItems());
-                    label_header.setText(String.format("Songs from '%s'", table_albums.getItems().get(table_albums.getSelectionModel().getSelectedIndex())));
-                    //play from the beginning
-                    player.play(0);
-                    //bind slider to visualize the process of playing the sound file
-                    slider.valueProperty().bind(player.getTask().valueProperty());
-                }
-            }
-            catch (Exception ex){}
-        });
         //add this to the context menu
-        table_albums.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles, menuShowSongsFromAlbum, playAlbum, showCover));
+        table_albums.setContextMenu(new ContextMenu(importMusicFolder, importMusicFiles, showCover));
     }
 
     /**
@@ -743,51 +636,53 @@ public class MainController implements Initializable{
                 //getting Data access object for the Song class
                 DAOSong dao = new DAOSong();
                 //to detect when no more music files remain unnoticed
-                int repeats = 0;
-                while(repeats < 25){
-                    //if BlockingListQueue contains at least one player
-                    if (players.size() > 0){
-                        //get only those players, status of which is READY. and for each of them
-                        players.stream().filter(player -> player.getStatus() == MediaPlayer.Status.READY).forEach(player -> {
-                            //get the duration of the sound file
-                            int duration = (int) player.getMedia().getDuration().toSeconds();
-                            //get the OS dependent source of the file
-                            File file = decodeStringAndGetFile(player.getMedia().getSource());
+                //if BlockingListQueue contains at least one player
+                while(players.size() > 0) {
+                    //get only those players, status of which is READY. and for each of them
+                    players.stream().filter(player -> player.getStatus() == MediaPlayer.Status.READY).forEach(player -> {
+                        //get the duration of the sound file
+                        int duration = (int) player.getMedia().getDuration().toSeconds();
+                        //get the OS dependent source of the file
+                        File file = decodeStringAndGetFile(player.getMedia().getSource());
 
-                            //calculate bitrate. Standard formula for the bitrate calculation. file.length() the amount of memory, taken by a file
-                            int bitrate = (int) (file.length() * 8 / duration / 1000);
+                        //calculate bitrate. Standard formula for the bitrate calculation. file.length() the amount of memory, taken by a file
+                        int bitrate = (int) (file.length() * 8 / duration / 1000);
 
-                            Song song = null;
-                            try {
-                                //creating a Song object
-                                song = new Song(URLDecoder.decode(file.getName(), "UTF-8").replace("%20", " "), file.toURI().toString(), duration, bitrate, Song.Quality.MEDIUM);
-                            } catch (UnsupportedEncodingException e) {
-                                e.printStackTrace();
-                            }
-                            //if saved successfully
-                            if (dao.create(song)) {
-                                //add it to the tableView
-                                table.getItems().add(dao.get(file.getName()));
-                                //and remove the player from the collection
-                                players.remove(player);
-
-                            }
-                            else{
-                                //probably already added or unsupported. So just removing it
-                                players.remove(player);
-                            }
-                        });
-                    }
-                    else{
-                        //if no more players in the collection
+                        Song song = null;
                         try {
-                            //wait till the thread dies
-                            Thread.currentThread().join();
-                            Thread.currentThread().interrupt();
-                        } catch (InterruptedException e) {
+                            //creating a Song object
+                            song = new Song(URLDecoder.decode(file.getName(), "UTF-8").replace("%20", " "), file.toURI().toString(), duration, bitrate, Song.Quality.MEDIUM);
+                        } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
                         }
+                        //if saved successfully
+                        if (dao.create(song)) {
+                            //add it to the tableView
+                            table.getItems().add(dao.get(file.getName()));
+                            //and remove the player from the collection
+                            player.dispose();
+                            players.remove(player);
+
+                        } else {
+                            //probably already added or unsupported. So just removing it
+                            player.dispose();
+                            players.remove(player);
+                        }
+                    });
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
+
+                }
+                //if no more players in the collection
+                try {
+                    //wait till the thread dies
+                    Thread.currentThread().join();
+                    Thread.currentThread().interrupt();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
 
             });
@@ -867,47 +762,49 @@ public class MainController implements Initializable{
             DAOSong dao = new DAOSong();
             //to detect when no more music files remain unnoticed
             int repeats = 0;
-            while(repeats < 25){
+            while(players.size() > 0) {
                 //if BlockingListQueue contains at least one player
-                if (players.size() > 0){
-                    //get only those players, status of which is READY. and for each of them
-                    players.stream().filter(player -> player.getStatus() == MediaPlayer.Status.READY).forEach(player -> {
-                        //get the duration of the sound file
-                        int duration = (int) player.getMedia().getDuration().toSeconds();
-                        //get the OS dependent source of the file
-                        File file = decodeStringAndGetFile(player.getMedia().getSource());
+                //get only those players, status of which is READY. and for each of them
+                players.stream().filter(player -> player.getStatus() == MediaPlayer.Status.READY).forEach(player -> {
+                    //get the duration of the sound file
+                    int duration = (int) player.getMedia().getDuration().toSeconds();
+                    //get the OS dependent source of the file
+                    File file = decodeStringAndGetFile(player.getMedia().getSource());
 
-                        //calculate bitrate. Standard formula for the bitrate calculation. file.length() the amount of memory, taken by a file
-                        int bitrate = (int) (file.length() * 8 / duration / 1000);
+                    //calculate bitrate. Standard formula for the bitrate calculation. file.length() the amount of memory, taken by a file
+                    int bitrate = (int) (file.length() * 8 / duration / 1000);
 
-                        Song song = null;
-                        try {
-                            //creating a Song object
-                            song = new Song(URLDecoder.decode(file.getName(), "UTF-8").replace("%20", " "), file.toURI().toString(), duration, bitrate, Song.Quality.MEDIUM);
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-                        //if saved successfully
-                        dao.create(song);
-                        if (!container.containsSong(container, dao.get(song.getName()))) {
-                            //adding the song to the container
-                            container.assignSong(dao.get(song.getName()));
-                            table.getItems().add(dao.get(file.getName()));
-                        }
-                        //And removing it
-                        players.remove(player);
-                    });
-                }
-                else{
-                    //if no more players in the collection
+                    Song song = null;
                     try {
-                        //wait till the thread dies
-                        Thread.currentThread().join();
-                        Thread.currentThread().interrupt();
-                    } catch (InterruptedException e) {
+                        //creating a Song object
+                        song = new Song(URLDecoder.decode(file.getName(), "UTF-8").replace("%20", " "), file.toURI().toString(), duration, bitrate, Song.Quality.MEDIUM);
+                    } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
+                    //if saved successfully
+                    dao.create(song);
+                    if (!container.containsSong(container, dao.get(song.getName()))) {
+                        //adding the song to the container
+                        container.assignSong(dao.get(song.getName()));
+                        table.getItems().add(dao.get(file.getName()));
+                    }
+                    //And removing it
+                    player.dispose();
+                    players.remove(player);
+                });
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+            }
+            //if no more players in the collection
+            try {
+                //wait till the thread dies
+                Thread.currentThread().join();
+                Thread.currentThread().interrupt();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
         });
@@ -958,9 +855,12 @@ public class MainController implements Initializable{
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Song song = row.getItem();
-                    MP3Player player = MP3Player.getInstance();
-                    player.clearAndAddToQueue(table.getItems());
-                    player.play(table.getItems().indexOf(song));
+                    if (!song.getPath().isEmpty()) {
+                        MP3Player player = MP3Player.getInstance();
+                        player.clearAndAddToQueue(table.getItems());
+                        player.play(table.getItems().indexOf(song));
+                        slider.valueProperty().bind(player.getTask().valueProperty());
+                    }
                 }
             });
             return row ;
@@ -1044,8 +944,13 @@ public class MainController implements Initializable{
     void playSong(ActionEvent event) {
         //get the player
         MP3Player mp3Player = MP3Player.getInstance();
+        //If there is only a stub object (when the playlist or album is empty)
+
         //if the player is not playing
         if (mp3Player.getPlayerStatus() == MediaPlayer.Status.UNKNOWN){
+            if (table.getItems().get(0).getPath().isEmpty()){
+                return;
+            }
             //get the index of the song from the tableView
             int selectedSongIndex = table.getSelectionModel().getSelectedIndex();
 

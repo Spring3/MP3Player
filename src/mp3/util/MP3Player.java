@@ -1,14 +1,10 @@
 package mp3.util;
 
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import mp3.controllers.MainController;
 import mp3.model.Song;
-
-import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -93,6 +89,7 @@ public class MP3Player {
                             updateTitle("0:0/0:0");
                             updateValue(0);
                         }
+                        Thread.sleep(100);
                     }
                     catch (Exception ex){}
                 }
@@ -308,8 +305,10 @@ public class MP3Player {
      * Stops the player
      */
     public synchronized void stop(){
-        if (player != null)
+        if (player != null) {
             player.stop();
+            player.dispose();
+        }
     }
 
     public synchronized int getCurrentSongIndex(){
