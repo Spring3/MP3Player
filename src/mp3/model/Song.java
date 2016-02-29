@@ -23,7 +23,6 @@ public class Song {
         bitrate = new SimpleIntegerProperty();
         durationHumanFriendly = new SimpleStringProperty("");
         bitrateString = new SimpleStringProperty("");
-        album = new SimpleObjectProperty<>(new Album());
     }
 
     /**
@@ -41,7 +40,6 @@ public class Song {
         this.bitrate = new SimpleIntegerProperty(bitrate);
         setDurationHumanFriendly(duration);
         bitrateString = new SimpleStringProperty(bitrate + "");
-        album = new SimpleObjectProperty<>(new Album());
         setQuality(quality);
     }
 
@@ -52,7 +50,6 @@ public class Song {
     private StringProperty path;
     private IntegerProperty duration;
     private IntegerProperty bitrate;
-    private ObjectProperty<Album> album;
     private Quality quality;
 
     /**
@@ -158,14 +155,6 @@ public class Song {
     public void setBitrate(int bitrate) {
         this.bitrate.set(bitrate);
         this.bitrateString.set(bitrate + "");
-    }
-
-    public void setAlbumProperty(Album album){
-        this.album.set(album);
-    }
-
-    public ObjectProperty<Album> getAlbumProperty(){
-        return album;
     }
 
     /**

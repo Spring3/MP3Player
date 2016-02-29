@@ -20,12 +20,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import javafx.util.Callback;
 import mp3.dao.DAOAlbum;
 import mp3.dao.DAOPlaylist;
 import mp3.dao.DAOSong;
@@ -35,9 +35,6 @@ import mp3.model.Song;
 import mp3.model.SongsContainer;
 import mp3.util.Config;
 import mp3.util.MP3Player;
-import mp3.views.Main;
-
-import java.awt.*;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -102,9 +99,6 @@ public class MainController implements Initializable{
     private TableColumn<Song, String> tCol_Bitrate;
 
     @FXML
-    private TableColumn<Song, Album> tCol_albumCover;
-
-    @FXML
     private TableView<Album> table_albums;
 
     @FXML
@@ -126,7 +120,10 @@ public class MainController implements Initializable{
     private Label lbl_duration;
 
     @FXML
-    public  AnchorPane bottomAnchorPane;
+    public AnchorPane bottomAnchorPane;
+
+    @FXML
+    public BorderPane borderPane;
 
     //A concurrent collection. Contains MusicPlayer objects.
     //Is used for fetching music metadata and other required data.
@@ -374,7 +371,7 @@ public class MainController implements Initializable{
         table_playlists.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             //if the newly selected value is not null
             if (newSelection != null) {
-                tCol_albumCover.setVisible(false);
+                borderPane.setRight(null);
                 table_albums.getSelectionModel().clearSelection();
                 //fetch songs from the playlist from database
                 List<Song> songs = new DAOPlaylist().getAllSongs(newSelection);
@@ -400,28 +397,6 @@ public class MainController implements Initializable{
         tCol_song.setCellValueFactory(new PropertyValueFactory<Song, String>("name"));
         tCol_Bitrate.setCellValueFactory(new PropertyValueFactory<Song, String>("bitrateString"));
         tCol_Duration.setCellValueFactory(new PropertyValueFactory<Song, String>("durationHumanFriendly"));
-        tCol_albumCover.setCellFactory(new Callback<TableColumn<Song, Album>, TableCell<Song, Album>>() {
-            @Override
-            public TableCell<Song, Album> call(TableColumn<Song, Album> param) {
-                TableCell<Song, Album> cell = new TableCell<Song, Album>(){
-                    @Override
-                    protected void updateItem(Album item, boolean empty){
-                        if (item != null){
-                            String imagePath = item.getPicPath();
-                            if (imagePath.isEmpty())
-                                imagePath = Main.class.getClassLoader().getResource("default.gif").toExternalForm();
-                            ImageView imageView = new ImageView(imagePath);
-                            imageView.setFitWidth(30);
-                            imageView.setFitHeight(30);
-                            setGraphic(imageView);
-                        }
-
-                    }
-                };
-                return cell;
-            };
-        });
-        tCol_albumCover.setCellValueFactory(cellData -> cellData.getValue().getAlbumProperty());
         //Creating ObservalbeList to keep track of our songs
         ObservableList<Song> songs = FXCollections.observableArrayList();
         //Adding all the songs, already saved into the local db
@@ -476,12 +451,8 @@ public class MainController implements Initializable{
         table_albums.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             //if exists
             if (newValue != null){
-                tCol_albumCover.setVisible(true);
                 List<Song> songs = new DAOAlbum().getAllSongs(newValue);
                 label_header.setText(String.format("Songs from '%s'", newValue));
-                for (Song song : songs){
-                    song.setAlbumProperty(newValue);
-                }
                 //clear all the songs from the table
                 table.getItems().clear();
                 //add songs from the album instead
@@ -489,6 +460,12 @@ public class MainController implements Initializable{
                 if (songs.size() == 0){
                     table.getItems().add(new Song());
                 }
+                ImageView imageView = new ImageView(newValue.getPicPath());
+                imageView.setFitHeight(250);
+                imageView.setFitWidth(330);
+                imageView.setLayoutY(100);
+                imageView.setTranslateY(42);
+                borderPane.setRight(imageView);
                 table_playlists.getSelectionModel().clearSelection();
             }
 
@@ -527,11 +504,7 @@ public class MainController implements Initializable{
                 //clear all the data, currently present in the tableView
                 table.getItems().clear();
                 label_header.setText(String.format("Songs from '%s'", item));
-                List<Song> songs = new DAOAlbum().getAllSongs(item);
-                for(Song song : songs){
-                    song.setAlbumProperty(item);
-                }
-                table.getItems().addAll();
+                table.getItems().addAll(new DAOAlbum().getAllSongs(item));
 
             }
             catch (Exception ex){}
@@ -676,9 +649,9 @@ public class MainController implements Initializable{
 
         //adding a grid layout.
         GridPane grid = new GridPane();
-        grid.setHgap(10);
+        grid.setHgap(60);
         grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        grid.setPadding(new Insets(20, 100, 10, 10));
 
         //a textfield for the name of the album
         TextField name = new TextField();
@@ -688,11 +661,12 @@ public class MainController implements Initializable{
         imagePath.setPromptText("Album image path");
         //and a button to call the file chooser
         Button fileChooser = new Button("Choose");
+        fileChooser.setPadding(new Insets(5, 15, 5, 18));
+        fileChooser.setTranslateX(4);
         //when called
         fileChooser.setOnAction( event -> {
             //initialize it
             final FileChooser fileSelector = new FileChooser();
-            fileChooser.setText("Choose album cover");
             fileSelector.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
             //getting the selected file
             final File selectedFile = fileSelector.showOpenDialog(btn_play.getScene().getWindow());
@@ -706,8 +680,8 @@ public class MainController implements Initializable{
         //positioning the elements into the grid
         grid.add(new Label("Album name:"), 0, 0);
         grid.add(name, 1, 0);
-        grid.add(imagePath, 0, 1);
-        grid.add(fileChooser, 1, 1);
+        grid.add(imagePath, 1, 1);
+        grid.add(fileChooser, 2, 1);
 
         //applying it to the view
         dialog.getDialogPane().setContent(grid);
@@ -882,9 +856,6 @@ public class MainController implements Initializable{
                         //adding the song to the container
                         container.assignSong(dao.get(song.getName()));
                         song = dao.get(file.getName());
-                        if (container instanceof Album){
-                            song.setAlbumProperty(table_albums.getSelectionModel().getSelectedItem());
-                        }
                         table.getItems().add(song);
                     }
                     //And removing it
@@ -974,6 +945,9 @@ public class MainController implements Initializable{
      */
     @FXML
     void playSong(ActionEvent event) {
+        if( table.getItems().size() == 0){
+            return;
+        }
         //get the player
         MP3Player mp3Player = MP3Player.getInstance();
         //If there is only a stub object (when the playlist or album is empty)
@@ -1054,16 +1028,16 @@ public class MainController implements Initializable{
     }
 
     /**
-     * Shows all songs. Adds them into the tableView.
+     * Shows unsorted songs. Adds them into the tableView.
      * @param actionEvent actionEvent
      */
     @FXML
     void mItem_showAllSongs(ActionEvent actionEvent){
-        tCol_albumCover.setVisible(false);
-        label_header.setText(String.format("All songs"));
+        borderPane.setRight(null);
+        label_header.setText(String.format("Unsorted Songs"));
         //clear all the currently displayed data
         table.getItems().clear();
-        //add all songs from the database to the tableView
+        //add unsorted songs from the database to the tableView
         table.getItems().addAll(new DAOSong().getAll());
         table_playlists.getSelectionModel().clearSelection();
         table_albums.getSelectionModel().clearSelection();
